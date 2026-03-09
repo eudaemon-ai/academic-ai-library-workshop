@@ -159,6 +159,12 @@ aws dynamodb delete-table --table-name LibraryWorkshop
 
 ---
 
+## License
+
+Copyright (c) 2026 Steven J. Miklovic. Licensed under the [Mozilla Public License 2.0](LICENSE).
+
+---
+
 ## Project Structure
 
 ```
