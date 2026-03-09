@@ -74,4 +74,4 @@ Update README with new AWS CLI commands
 
 ## Questions?
 
-Open an issue and tag it **question** — we're happy to help.
+Open an issue and apply the `question` label (or include `[question]` in the title) — we're happy to help.
