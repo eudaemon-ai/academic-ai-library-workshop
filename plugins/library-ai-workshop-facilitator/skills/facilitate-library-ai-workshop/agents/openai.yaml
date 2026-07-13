@@ -1,0 +1,4 @@
+interface:
+  display_name: "Library AI Workshop Coach"
+  short_description: "Coach librarians through research AI practice"
+  default_prompt: "Use $facilitate-library-ai-workshop to coach me through the next workshop exercise."

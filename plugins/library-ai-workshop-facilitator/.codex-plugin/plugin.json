@@ -1,0 +1,22 @@
+{
+  "name": "library-ai-workshop-facilitator",
+  "version": "0.1.0",
+  "description": "Coach one learner through the Research with AI workshop, one evidence-based step at a time.",
+  "author": {
+    "name": "Library AI Workshop maintainers"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Library AI Workshop Coach",
+    "shortDescription": "Guide a librarian through hands-on AI research practice.",
+    "longDescription": "Runs the Research with AI curriculum as an interactive coaching session. The coach presents one step at a time, waits for the learner's work, uses simulated course data, and keeps source checks and human judgment central.",
+    "developerName": "Library AI Workshop maintainers",
+    "category": "Education",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": [
+      "Coach me through the workshop from the beginning.",
+      "Resume my workshop at the next exercise.",
+      "Help me practice source and citation checks."
+    ]
+  }
+}

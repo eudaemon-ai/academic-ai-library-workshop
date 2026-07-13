@@ -14,7 +14,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
 	const id = uuidv4();
 	const cohort = process.env.PUBLIC_COHORT ?? 'default';
-	const validRole = ['reference', 'cataloging', 'collection_dev', 'other'].includes(role)
+	const validRole = ['reference', 'liaison', 'systematic_review', 'scholarly_communication', 'data', 'other'].includes(role)
 		? role
 		: 'other';
 

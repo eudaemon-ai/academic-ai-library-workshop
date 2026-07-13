@@ -7,7 +7,7 @@
 	import Sidebar from '$lib/components/layout/Sidebar.svelte';
 	import ExerciseHeader from '$lib/components/exercise/ExerciseHeader.svelte';
 	import StepShell from '$lib/components/exercise/StepShell.svelte';
-	import TerminalStep from '$lib/components/exercise/TerminalStep.svelte';
+	import WorkspaceStep from '$lib/components/exercise/WorkspaceStep.svelte';
 	import PromptStep from '$lib/components/exercise/PromptStep.svelte';
 	import ObserveStep from '$lib/components/exercise/ObserveStep.svelte';
 	import ReflectStep from '$lib/components/exercise/ReflectStep.svelte';
@@ -145,8 +145,8 @@
 					{@const isComplete = completedIndices.includes(step.index)}
 					{@const isActive = step.index === activeStep && !exerciseComplete}
 					<StepShell {step} {isComplete} {isActive}>
-						{#if step.type === 'terminal'}
-							<TerminalStep
+						{#if step.type === 'workspace'}
+							<WorkspaceStep
 								{step}
 								{isComplete}
 								onComplete={() => markComplete(step.index)}

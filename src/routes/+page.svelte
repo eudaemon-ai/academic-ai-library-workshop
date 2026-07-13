@@ -39,50 +39,37 @@
 </script>
 
 <div class="relative overflow-hidden">
-	<!-- Terminal watermark -->
+	<!-- Research-project watermark -->
 	<div
 		aria-hidden="true"
 		class="pointer-events-none absolute right-0 top-0 w-72 select-none px-6 pt-12 opacity-[0.07]"
 		style="mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);"
 	>
-		<pre class="font-mono text-[0.6rem] leading-[1.7] text-jhu-blue">~/workshop $ cd library-context
-~/workshop/library-context $ claude
+		<pre class="font-mono text-[0.6rem] leading-[1.7] text-jhu-blue">RESEARCH SUPPORT PROJECT
 
-  ╭──────────────────────────────╮
-  │ claude  ✓ CLAUDE.md loaded   │
-  ╰──────────────────────────────╯
+Sources enabled
+  ✓ WORKSPACE-BRIEF.md
+  ✓ research-request.txt
+  ✓ public web
+  — connected drives off
 
-> @patron-queries.txt
+Research question
+  How does open access affect
+  the reach and use of public-
+  health research?
 
-  Read 10 patron queries.
+Plan review
+  ✓ separate outcome families
+  ✓ include mixed findings
+  ✓ record coverage gaps
 
-> Draft a reference response for
-  query 1 following our library
-  communication style from CLAUDE.md.
+Source audit
+  12 checked
+   2 partly supported
+   1 inaccessible
 
-  Thank you for reaching out to
-  our Ask a Librarian service.
-  For peer-reviewed sources on
-  social media and mental health
-  published in the last 5 years,
-  I recommend starting with
-  PsycINFO and PubMed Central...
-
-> The methodological debate section
-  needs more detail.
-
-  Researchers in this field often
-  note that self-report measures
-  may not accurately capture usage
-  patterns, and many studies rely
-  on cross-sectional designs that
-  limit causal inference...
-
-> /clear
-
-  Conversation context cleared.
-
-> ▌</pre>
+Human review
+  pending</pre>
 	</div>
 
 	<!-- Page content -->
@@ -92,13 +79,13 @@
 				Johns Hopkins University Libraries
 			</p>
 			<h1 class="font-serif text-[2.5rem] font-bold leading-tight tracking-tight text-jhu-blue">
-				Claude Code for Librarians
+				Research with AI
 			</h1>
 			<p class="mx-auto mt-4 max-w-md text-[0.9375rem] leading-7 text-gray-500">
-				Learn to use Claude Code CLI in your everyday library work — no coding required.
+				A hands-on workshop for librarians using ChatGPT, Claude, Gemini, or Copilot.
 			</p>
 			<p class="mt-2 font-mono text-[0.6875rem] tracking-wide text-gray-400">
-				exercises run in your <a href="{base}/terminal-primer" class="text-jhu-blue/50 underline underline-offset-2 hover:text-jhu-blue transition-colors">terminal</a> &nbsp;·&nbsp; self-paced
+				exercises run in <a href="{base}/terminal-primer" class="text-jhu-blue/50 underline underline-offset-2 hover:text-jhu-blue transition-colors">your AI tool</a> &nbsp;·&nbsp; no coding &nbsp;·&nbsp; self-paced
 			</p>
 			<div class="mx-auto mt-6 h-px w-10 bg-jhu-gold"></div>
 		</div>

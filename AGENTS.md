@@ -1,10 +1,12 @@
-# Library AI Workshop — Developer Instructions
+# Codex-cli-library-workshop — Developer Instructions
 
 ## Project Overview
 
-This is a SvelteKit 2.x eLearning application for the "Library AI Workshop" — a guided program teaching research librarians to use graphical AI tools safely and critically. The app has two views: a learner view (self-paced exercises) and a facilitator dashboard (cohort progress monitoring).
+This is a SvelteKit 2.x eLearning application for the "Library AI Workshop" — a guided program teaching non-technical academic library staff to use Codex CLI. The app has two views: a learner view (self-paced exercises) and a facilitator dashboard (cohort progress monitoring).
 
-**Note**: This file (`/CLAUDE.md`) contains developer guidance. Workshop participants use `src/content/library-context/WORKSPACE-BRIEF.md`, a tool-neutral brief they add to the AI tool used in the workshop.
+**Note**: There are two AGENTS.md files in this project:
+- This file (`/AGENTS.md`) — for developers building the SvelteKit app
+- `src/content/library-context/AGENTS.md` — for workshop participants using Codex CLI during exercises
 
 ## Tech Stack
 
@@ -24,7 +26,7 @@ src/
 │   ├── stores/           # Svelte 5 $state progress cache
 │   └── utils/            # formatDuration, formatRelativeTime, renderMarkdown
 ├── content/
-│   ├── library-context/  # WORKSPACE-BRIEF.md and simulated participant data
+│   ├── library-context/  # AGENTS.md and sample data for workshop participants
 │   └── modules/          # Exercise markdown files (01-reference, 02-cataloging, 03-collection-dev)
 ├── routes/
 │   ├── /                 # Landing page (module cards)
@@ -34,7 +36,7 @@ src/
 └── lib/components/
     ├── layout/            # AppNav, Sidebar, ProgressBar
     ├── modules/           # ModuleCard, ModuleOverview, ExerciseListItem
-    ├── exercise/          # StepShell, WorkspaceStep, PromptStep, ObserveStep, ReflectStep, DiscoveryMoment
+    ├── exercise/          # StepShell, TerminalStep, PromptStep, ObserveStep, ReflectStep, DiscoveryMoment
     ├── facilitator/       # CohortProgressTable, ModuleHeatmap, PacingAlert, TalkingPoints
     └── ui/                # CopyButton, Badge, Modal, LearnerIdentityModal
 ```
@@ -50,7 +52,7 @@ GSI: `cohort-lastSeen-index` (pk=cohort, sk=lastSeen) for facilitator queries.
 
 ## Content Format
 
-Exercise markdown files use YAML frontmatter for structured step data, followed by markdown body for the exercise introduction and discussion questions. Steps have types: `workspace`, `prompt`, `observe`, `reflect`.
+Exercise markdown files use YAML frontmatter for structured step data, followed by markdown body for the exercise introduction and discussion questions. Steps have types: `terminal`, `prompt`, `observe`, `reflect`.
 
 The `discovery_moment: true` flag triggers a `DiscoveryMoment` interstitial after the exercise's last step, showing the `## Discussion` section from the markdown body.
 

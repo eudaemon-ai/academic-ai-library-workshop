@@ -1,10 +1,13 @@
 # Library AI Workshop
 
-A SvelteKit eLearning application that teaches non-technical academic library staff to use Claude Code CLI in their everyday work. No coding required — participants follow guided prompting exercises across three modules:
+A SvelteKit eLearning application that helps research librarians use graphical AI tools safely and critically. No coding is required. The June 2026 curriculum is product-neutral across ChatGPT, Claude, Gemini, and Microsoft 365 Copilot and follows four modules:
 
-1. **Reference & Research** — Draft reference responses, synthesize sources, refine with follow-up prompts
-2. **Cataloging & Metadata** — Generate MARC records, suggest LCSH headings, write catalog abstracts
-3. **Collection Development** — Write selection rationales, evaluate vendor offers, analyze COUNTER 5 usage data
+1. **Safe Setup & the Reference Interview** — Set a data boundary, scope a research request, and build a concept map
+2. **Search & Source Verification** — Review research plans, inspect source sets, and audit claims against citations
+3. **Evidence Synthesis & Data** — Build claim-evidence matrices, preserve disagreement, and verify calculations
+4. **Reproducible Research Support** — Test database syntax, teach critical AI use, and package accountable handoffs
+
+The curriculum is grounded in the [ACRL AI Competencies for Academic Library Workers](https://www.ala.org/acrl/standards/ai) and the [ALA Guidance on the Use of Artificial Intelligence in Libraries](https://www.ala.org/sites/default/files/2026-06/ALA%20CD%2044.2%20AI%20Guidance%20Document%20-%20Final.pdf). AI output is treated as draft material requiring meaningful human review.
 
 Progress is tracked in AWS DynamoDB. A facilitator dashboard shows cohort progress, pacing alerts, and talking points keyed to the current exercise.
 
@@ -16,7 +19,8 @@ See `FACILITATOR.md` for the full run-of-show guide.
 
 - Node.js 20+
 - An AWS account with DynamoDB access
-- Claude Code CLI installed on each participant's machine (`npm install -g @anthropic-ai/claude-code`)
+- A ChatGPT, Claude, Gemini, or Microsoft 365 Copilot account that participants may use for the workshop
+- File upload access and, for Module 2, web search or a longer-running research mode
 - The `src/content/library-context/` folder accessible to participants
 
 ---
@@ -108,6 +112,18 @@ npm run build        # Build for production
 npm run preview      # Preview production build
 ```
 
+## Agent-Led Delivery
+
+The repo includes an installable facilitator Plugin at `plugins/library-ai-workshop-facilitator/`. Its bundled Skill coaches one learner through the course one step at a time and includes the modules and simulated data it needs at runtime.
+
+After changing course content or `FACILITATOR.md`, refresh the bundled references:
+
+```bash
+npm run sync:facilitator-plugin
+```
+
+The repo-local marketplace entry is `.agents/plugins/marketplace.json`. See `FACILITATOR.md` for the agent teaching protocol, validation commands, installation steps, and test scenarios.
+
 ---
 
 ## Facilitator Access
@@ -133,7 +149,7 @@ node build/index.js
 
 Set environment variables in your deployment environment (not in `.env`).
 
-For a workshop, a simple option is to run on a local machine on the same network as participants. No internet connection is required except for AWS DynamoDB access.
+For a workshop, a simple option is to run the app on a local machine on the same network as participants. Participants still need internet access for their AI tool and current-source exercises.
 
 ---
 
@@ -173,7 +189,7 @@ src/
 ├── lib/content/      # Markdown loader and TypeScript types
 ├── lib/components/   # Svelte components
 ├── content/
-│   ├── library-context/   # CLAUDE.md + sample data for participants
+│   ├── library-context/   # WORKSPACE-BRIEF.md + simulated sample data
 │   └── modules/           # Workshop exercise markdown files
 └── routes/           # SvelteKit pages and API endpoints
 ```

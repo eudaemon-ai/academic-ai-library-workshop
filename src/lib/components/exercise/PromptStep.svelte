@@ -15,7 +15,7 @@
 
 <div class="space-y-3.5">
 	<div class="mb-1">
-		<span class="rounded-md bg-jhu-blue/8 px-2 py-0.5 font-mono text-[11px] font-medium tracking-wide text-jhu-blue">CLAUDE PROMPT</span>
+		<span class="rounded-md bg-jhu-blue/8 px-2 py-0.5 font-mono text-[11px] font-medium tracking-wide text-jhu-blue">TRY THIS PROMPT</span>
 	</div>
 
 	<div class="prose prose-sm max-w-none leading-relaxed text-gray-700">

@@ -1,4 +1,4 @@
-export type StepType = 'terminal' | 'prompt' | 'observe' | 'reflect';
+export type StepType = 'workspace' | 'prompt' | 'observe' | 'reflect';
 
 export interface Step {
 	index: number;
