@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review AI Research Output"
+  short_description: "Audit claims, sources, data, and handoffs"
+  default_prompt: "Use $review-ai-research-output to help me audit this AI-assisted research draft."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run a Library AI Workshop"
+  short_description: "Plan and facilitate a librarian cohort session"
+  default_prompt: "Use $run-library-ai-workshop-cohort to prepare and run my next workshop session."

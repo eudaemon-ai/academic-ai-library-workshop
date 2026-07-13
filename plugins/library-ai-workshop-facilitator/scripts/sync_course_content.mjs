@@ -5,40 +5,55 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const pluginRoot = resolve(scriptDir, '..');
 const repoRoot = resolve(pluginRoot, '..', '..');
-const referencesRoot = resolve(
-	pluginRoot,
-	'skills',
-	'facilitate-library-ai-workshop',
+const skillsRoot = resolve(pluginRoot, 'skills');
+const learnerReferences = resolve(skillsRoot, 'facilitate-library-ai-workshop', 'references');
+const cohortReferences = resolve(skillsRoot, 'run-library-ai-workshop-cohort', 'references');
+const interviewReferences = resolve(
+	skillsRoot,
+	'practice-library-reference-interview',
 	'references'
 );
-const courseRoot = resolve(referencesRoot, 'course');
+const reviewReferences = resolve(skillsRoot, 'review-ai-research-output', 'references');
+
+const aiGuideSource = resolve(
+	repoRoot,
+	'src',
+	'content',
+	'library-context',
+	'WORKSPACE-BRIEF.md'
+);
+const modulesSource = resolve(repoRoot, 'src', 'content', 'modules');
+const sampleDataSource = resolve(repoRoot, 'src', 'content', 'library-context', 'sample-data');
 
 const requiredSources = [
 	resolve(repoRoot, 'FACILITATOR.md'),
-	resolve(repoRoot, 'src', 'content', 'library-context', 'WORKSPACE-BRIEF.md'),
-	resolve(repoRoot, 'src', 'content', 'modules'),
-	resolve(repoRoot, 'src', 'content', 'library-context', 'sample-data')
+	aiGuideSource,
+	modulesSource,
+	sampleDataSource
 ];
 
 for (const source of requiredSources) {
 	if (!existsSync(source)) throw new Error(`Missing course source: ${source}`);
 }
 
-mkdirSync(referencesRoot, { recursive: true });
-rmSync(courseRoot, { recursive: true, force: true });
+const allReferenceRoots = [
+	learnerReferences,
+	cohortReferences,
+	interviewReferences,
+	reviewReferences
+];
 
-cpSync(resolve(repoRoot, 'FACILITATOR.md'), resolve(referencesRoot, 'FACILITATOR.md'));
-cpSync(
-	resolve(repoRoot, 'src', 'content', 'library-context', 'WORKSPACE-BRIEF.md'),
-	resolve(referencesRoot, 'AI-TOOL-GUIDE.md')
-);
-cpSync(resolve(repoRoot, 'src', 'content', 'modules'), resolve(courseRoot, 'modules'), {
-	recursive: true
-});
-cpSync(
-	resolve(repoRoot, 'src', 'content', 'library-context', 'sample-data'),
-	resolve(courseRoot, 'sample-data'),
-	{ recursive: true }
-);
+for (const referencesRoot of allReferenceRoots) {
+	mkdirSync(referencesRoot, { recursive: true });
+	cpSync(aiGuideSource, resolve(referencesRoot, 'AI-TOOL-GUIDE.md'));
+}
 
-console.log(`Synced workshop content to ${referencesRoot}`);
+for (const referencesRoot of [learnerReferences, cohortReferences]) {
+	const courseRoot = resolve(referencesRoot, 'course');
+	rmSync(courseRoot, { recursive: true, force: true });
+	cpSync(resolve(repoRoot, 'FACILITATOR.md'), resolve(referencesRoot, 'FACILITATOR.md'));
+	cpSync(modulesSource, resolve(courseRoot, 'modules'), { recursive: true });
+	cpSync(sampleDataSource, resolve(courseRoot, 'sample-data'), { recursive: true });
+}
+
+console.log(`Synced workshop content to ${allReferenceRoots.length} skill reference sets`);

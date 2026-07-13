@@ -1,0 +1,4 @@
+interface:
+  display_name: "Practice a Reference Interview"
+  short_description: "Role-play a safe research consultation"
+  default_prompt: "Use $practice-library-reference-interview to role-play a research consultation with me."

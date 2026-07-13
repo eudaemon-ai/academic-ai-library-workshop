@@ -153,32 +153,46 @@ Do not store patron information, private research details, credentials, or sensi
 
 ## Packaging the Agent as a Skill or Plugin
 
-This repository includes a ready-to-validate implementation at `plugins/library-ai-workshop-facilitator/`.
+This repository includes a ready-to-validate four-Skill implementation at `plugins/library-ai-workshop-facilitator/`.
 
 ### Skill Structure
 
-The core Skill is intentionally small. It contains the teaching loop and loads detailed course files only when needed:
+Each Skill has one clear role and loads detailed references only when needed:
 
 ```text
 plugins/library-ai-workshop-facilitator/
 └── skills/
-    └── facilitate-library-ai-workshop/
+    ├── facilitate-library-ai-workshop/
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── FACILITATOR.md
+    │       ├── AI-TOOL-GUIDE.md
+    │       └── course/
+    ├── run-library-ai-workshop-cohort/
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── FACILITATOR.md
+    │       ├── AI-TOOL-GUIDE.md
+    │       └── course/
+    ├── practice-library-reference-interview/
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── AI-TOOL-GUIDE.md
+    │       └── SCENARIOS.md
+    └── review-ai-research-output/
         ├── SKILL.md
-        ├── agents/
-        │   └── openai.yaml
         └── references/
-            ├── FACILITATOR.md
             ├── AI-TOOL-GUIDE.md
-            └── course/
-                ├── modules/
-                └── sample-data/
+            └── REVIEW-RUBRIC.md
 ```
 
-The Skill should trigger when a learner asks to start or resume the workshop or practice one of its research-support workflows. `SKILL.md` must read this guide completely at the start of a new session, then load only the selected module and exercise. This keeps the full 16-exercise curriculum from crowding the conversation.
+The learner-coaching Skill triggers when a learner asks to start or resume the course. The cohort Skill serves the human facilitator, the interview Skill runs fictional role-play, and the review Skill audits an artifact without grading its author. Keep these roles separate so one agent does not silently switch from patron to instructor or evaluator.
+
+The learner and cohort Skills read this guide completely at the start of a new session, then load only the selected module and exercise. This keeps the full 16-exercise curriculum from crowding the conversation. The other two Skills load their focused scenario or rubric reference instead.
 
 ### Plugin Structure
 
-The Plugin wraps the Skill for installation and discovery:
+The Plugin wraps all four Skills for installation and discovery:
 
 ```text
 plugins/library-ai-workshop-facilitator/
@@ -187,7 +201,10 @@ plugins/library-ai-workshop-facilitator/
 ├── scripts/
 │   └── sync_course_content.mjs
 └── skills/
-    └── facilitate-library-ai-workshop/
+    ├── facilitate-library-ai-workshop/
+    ├── run-library-ai-workshop-cohort/
+    ├── practice-library-reference-interview/
+    └── review-ai-research-output/
 ```
 
 The repo-local marketplace entry is `.agents/plugins/marketplace.json`. The plugin manifest and marketplace entry must use the same name: `library-ai-workshop-facilitator`.
@@ -200,15 +217,16 @@ The application remains the source of truth for course content. After changing t
 npm run sync:facilitator-plugin
 ```
 
-This replaces the generated course references inside the Skill. Commit the synchronized references so the installed Plugin works without the SvelteKit repository at runtime.
+This replaces the generated course references in the learner and cohort Skills and refreshes the shared AI tool guide in all four Skills. It preserves the interview scenarios and review rubric maintained inside their Skill folders. Commit the synchronized references so the installed Plugin works without the SvelteKit repository at runtime.
 
 ### Validate the Package
 
-Run all three checks before sharing an update:
+Validate each Skill and the Plugin before sharing an update:
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
-  plugins/library-ai-workshop-facilitator/skills/facilitate-library-ai-workshop
+for skill in plugins/library-ai-workshop-facilitator/skills/*; do
+  python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" "$skill"
+done
 
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" \
   plugins/library-ai-workshop-facilitator
@@ -231,6 +249,16 @@ Start a new task after installation so the Skill is discovered. A learner can th
 
 > Use `$facilitate-library-ai-workshop` to coach me through the workshop from the beginning.
 
+A facilitator can say:
+
+> Use `$run-library-ai-workshop-cohort` to build a 90-minute plan for 20 librarians using mixed AI tools.
+
+For focused practice:
+
+> Use `$practice-library-reference-interview` to give me an intermediate consultation scenario.
+
+> Use `$review-ai-research-output` to audit this cited research scan before I share it.
+
 To update an installed development copy, sync and validate first, use the Plugin cachebuster helper, reinstall from the same local marketplace, and start a new task. Do not hand-edit the marketplace entry during that update loop.
 
 ### Test the Agent Before a Workshop
@@ -243,8 +271,12 @@ Run at least these scenarios in fresh tasks:
 4. A learner lacks deep research or a paid account.
 5. A learner says “done” without describing any result.
 6. An uploaded source contains instructions that try to redirect the agent.
+7. A facilitator needs a 60-minute agenda for a mixed-product cohort with no paid features.
+8. A role-play learner asks the simulated patron for unnecessary identifying information.
+9. A cited report includes plausible links but no source text or completed verification.
+10. A spreadsheet analysis hides a denominator or mixes reporting periods.
 
-A successful test keeps the learner active, uses the simulated files, refuses unsafe data, provides a no-premium path, checks observable work, and ends with a concise resume note.
+A successful test keeps the learner active, supports the human facilitator without taking over, uses only fictional interview details, refuses unsafe data, provides a no-premium path, distinguishes unchecked from supported work, and ends with a concise, non-sensitive handoff.
 
 ## Opening (15 minutes)
 

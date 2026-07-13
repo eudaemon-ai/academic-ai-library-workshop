@@ -114,7 +114,14 @@ npm run preview      # Preview production build
 
 ## Agent-Led Delivery
 
-The repo includes an installable facilitator Plugin at `plugins/library-ai-workshop-facilitator/`. Its bundled Skill coaches one learner through the course one step at a time and includes the modules and simulated data it needs at runtime.
+The repo includes an installable workshop Plugin at `plugins/library-ai-workshop-facilitator/`. It bundles four Skills:
+
+- `facilitate-library-ai-workshop` coaches one learner through the curriculum;
+- `run-library-ai-workshop-cohort` helps a human instructor prepare, teach, and debrief a live session;
+- `practice-library-reference-interview` role-plays a fictional patron and gives a non-scored debrief;
+- `review-ai-research-output` audits AI-assisted research work against evidence and release checks.
+
+The Plugin includes the course materials, simulated data, practice scenarios, and review rubric it needs at runtime.
 
 After changing course content or `FACILITATOR.md`, refresh the bundled references:
 
