@@ -86,3 +86,4 @@ If the learner wants to resume later, provide a short, non-sensitive resume note
 - `references/AI-TOOL-GUIDE.md`: privacy, evidence, source, and human-review rules.
 - `references/course/modules/`: module and exercise Markdown copied from the workshop application.
 - `references/course/sample-data/`: simulated learner files used by the exercises.
+- `references/course/SKILL-MARKETPLACE-HANDOUT.md`: appraisal crosswalk, vetting checklist, and policy template for the optional bonus module. Offer it during Module 5 exercises 2, 3, and 5. It works on paper, so it is the fallback when a learner cannot install anything.

@@ -85,3 +85,4 @@ Do not rank participants or infer competence from completion speed. Keep any han
 - `references/AI-TOOL-GUIDE.md`: data boundaries, source standards, outputs, and the human review gate.
 - `references/course/modules/`: module overviews and exercise checkpoints.
 - `references/course/sample-data/`: simulated files for demonstrations and fallback activities.
+- `references/course/SKILL-MARKETPLACE-HANDOUT.md`: printable working sheets for the optional bonus module — appraisal crosswalk, vetting checklist, and local policy template. Hand out to a cohort that cannot install software; the session then loses none of its learning outcomes.

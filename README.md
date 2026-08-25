@@ -30,7 +30,7 @@ See `FACILITATOR.md` for the full run-of-show guide.
 - A ChatGPT, Claude, Gemini, or Microsoft 365 Copilot account that participants may use for the workshop
 - File upload access and, for Module 2, web search or a longer-running research mode
 - The `src/content/library-context/` folder accessible to participants
-- **For the optional bonus module only**: nothing extra is required. Its plugin and CLI paths use Claude Code or Codex, a terminal, and [Bun](https://bun.sh), but its browse-only path needs just a web browser and works against the upstream repository. The workshop release package does not bundle Kanon or the Context Bazaar marketplace — see [Distribution](#distribution) below.
+- **For the optional bonus module only**: nothing extra is required. Its plugin and CLI paths use Claude Code or Codex, a terminal, and [Bun](https://bun.sh), but its browse-only path needs just a web browser and works against the upstream repository. The workshop release package carries `SKILL-MARKETPLACE-HANDOUT.md` — printable working sheets for that module — but does not bundle Kanon or the Context Bazaar marketplace itself. See [Distribution](#distribution).
 
 ---
 
@@ -146,7 +146,7 @@ The repo-local marketplace entry is `.agents/plugins/marketplace.json`. See `FAC
 
 Two separate things ship from this repository, and the bonus module deliberately depends on neither.
 
-**The workshop materials release.** `.github/workflows/release-materials.yml` packages `src/content/library-context/` as `library-context.zip` on the `workshop-materials` release whenever that folder changes. It contains the standing brief and simulated data — what a learner needs in a graphical AI tool. Modules 1–4 depend on it.
+**The workshop materials release.** `.github/workflows/release-materials.yml` packages `src/content/library-context/` as `library-context.zip` on the `workshop-materials` release whenever that folder changes. It contains the standing brief, the simulated data used by Modules 1–4, and `SKILL-MARKETPLACE-HANDOUT.md` — appraisal crosswalk, vetting checklist, and local policy template for the bonus module. The handout is our own material under MPL-2.0, it works on paper, and it is what a browse-only or offline cohort needs.
 
 **The facilitator plugin.** `plugins/library-ai-workshop-facilitator/`, installed from the repo-local marketplace at `.agents/plugins/marketplace.json`, carrying its own copy of the course.
 

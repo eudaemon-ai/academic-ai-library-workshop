@@ -28,7 +28,7 @@ steps:
   - index: 2
     label: "Draft the local policy"
     type: "prompt"
-    instruction: "This is the deliverable a department can actually adopt."
+    instruction: "Section 3 of `SKILL-MARKETPLACE-HANDOUT.md` is this policy as a fill-in template. Use it, and write OPEN wherever your library has not decided. This is the deliverable a department can actually adopt."
     prompt_text: |
       Draft a one-page policy for AI skill adoption in an academic library. Cover: who may add a marketplace; who reviews a skill before install; which trust lanes are installable without review and which require it; how a skill is described locally; who owns each installed skill; how often installed skills are re-reviewed; what triggers removal; and how staff are told when something changes.
 

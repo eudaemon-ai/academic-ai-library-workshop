@@ -58,6 +58,8 @@ This is the only module that assumes an **agentic coding tool** rather than a gr
 | **CLI path** | The above plus a terminal, `git`, and [Bun](https://bun.sh) | Everything, plus validate, author, compile, and publish |
 | **Browse-only path** | A web browser | Read the published catalog and repository; do the appraisal, vetting, and governance work on paper |
 
+`SKILL-MARKETPLACE-HANDOUT.md`, in the workshop folder beside `WORKSPACE-BRIEF.md`, carries the three working sheets this module uses: an appraisal crosswalk, a vetting checklist, and a local policy template. All three work on paper, on any path.
+
 Choosing the browse-only path is a legitimate outcome, not a lesser one. Several of the most important judgments in this module — provenance, licensing, trust, who may approve an install — are made before any software is installed at all.
 
 ### Vocabulary

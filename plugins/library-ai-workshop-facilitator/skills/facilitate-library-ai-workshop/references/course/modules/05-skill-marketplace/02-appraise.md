@@ -33,7 +33,7 @@ steps:
   - index: 3
     label: "Map metadata to selection criteria"
     type: "observe"
-    instruction: "Every field in that frontmatter is doing a job you already do under a different name. Check which ones are present and which are only asserted."
+    instruction: "Open the appraisal crosswalk in `SKILL-MARKETPLACE-HANDOUT.md` and work down it. Every field in that frontmatter is doing a job you already do under a different name; check which ones are present and which are only asserted."
     observe_items:
       - "`type` — skill, rule, workflow, agent, prompt, template, reference-pack: format, not subject"
       - "`trust` — official, partner, community, or experimental: a declared oversight lane, self-assigned by the author"

@@ -384,7 +384,9 @@ One thing to know before you are asked: the `kanon` skill's setup instructions s
 
 ### How learners get it
 
-Nothing for this module ships in `library-context.zip` or in the facilitator plugin. The module runs against the upstream repository live, so there is nothing to hand out and nothing to keep current.
+One thing for this module does ship: `SKILL-MARKETPLACE-HANDOUT.md`, in `library-context.zip` and in this plugin at `references/course/`. It carries the module's three working sheets — an appraisal crosswalk for Exercise 2, a vetting checklist and decision block for Exercise 3, and a fill-in local policy template for Exercise 5. Print it. All three work without a terminal, a plugin, or an internet connection.
+
+Kanon and the Context Bazaar marketplace themselves are not bundled. The module runs against the upstream repository live, so there is no third-party copy to keep current.
 
 If your learners cannot add a marketplace — no plugin support, or local policy forbids it — do not treat the module as blocked:
 

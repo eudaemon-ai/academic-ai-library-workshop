@@ -42,7 +42,7 @@ steps:
   - index: 2
     label: "Apply the checklist"
     type: "observe"
-    instruction: "These are the four families the validator looks for. Check the artifact against each one yourself, so you know what the tool is and is not covering."
+    instruction: "Work through section 2 of `SKILL-MARKETPLACE-HANDOUT.md`, which sets these out as tick-boxes. These are the families an automated scanner looks for; check the artifact against each yourself, so you know what the tool is and is not covering."
     observe_items:
       - "Prompt injection — phrases like `ignore previous instructions`, `disregard your guidelines`, `you are now`, a fake `[SYSTEM]` marker, or a `DAN` jailbreak reference in the body"
       - "Dangerous hook commands — a hook that runs `curl` or `wget`, opens a `netcat` connection to an IP address, executes inline Python or Node, or pipes `base64` into a shell"
@@ -59,7 +59,7 @@ steps:
       Structure it as: what the artifact instructs an AI tool to do; what it can reach (files, network, credentials); its license, author, and provenance; findings against the four security check families; and a single recommendation of accept, reject, or escalate, with the reason.
 
       Where evidence is missing, say that it is missing rather than assuming it is fine.
-    checkpoint: "The recommendation names a decision and distinguishes what you verified from what you accepted on trust."
+    checkpoint: "The recommendation names a decision and distinguishes what you verified from what you accepted on trust. Record it in the decision block at the end of section 2 of the handout."
   - index: 4
     label: "Reflect on the boundary"
     type: "reflect"
