@@ -26,7 +26,7 @@
 		<span class="rounded-md bg-[#D4870A]/10 px-2 py-0.5 font-mono text-[11px] font-medium tracking-wide text-[#A0620A]">OBSERVE</span>
 	</div>
 
-	<p class="text-sm leading-relaxed text-gray-700">{step.instruction}</p>
+	<div class="prose prose-sm max-w-none text-sm leading-relaxed text-gray-700">{@html step.instruction}</div>
 
 	{#if step.observe_items}
 		<ul class="space-y-2.5">
@@ -39,7 +39,7 @@
 						disabled={isComplete}
 						class="mt-0.5 h-4 w-4 rounded border-gray-300 text-jhu-gold focus:ring-jhu-gold/50"
 					/>
-					<label for="obs-{i}" class="text-sm leading-relaxed text-gray-700">{item}</label>
+					<label for="obs-{i}" class="text-sm leading-relaxed text-gray-700">{@html item}</label>
 				</li>
 			{/each}
 		</ul>

@@ -1,8 +1,8 @@
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
-import { marked } from 'marked';
-import type { Module, ModuleMeta, Exercise, ExerciseMeta } from './types.js';
+import { renderMarkdown, renderMarkdownInline } from '$lib/utils/markdown.js';
+import type { Module, ModuleMeta, Exercise, ExerciseMeta, Step } from './types.js';
 
 // Content lives at src/content/modules/ relative to the project root.
 // In SvelteKit server context, process.cwd() is the project root.
@@ -10,8 +10,20 @@ function contentRoot(): string {
 	return join(process.cwd(), 'src', 'content', 'modules');
 }
 
-function renderMarkdown(src: string): string {
-	return marked.parse(src, { async: false }) as string;
+// Step text is authored as markdown in frontmatter and rendered here, so the
+// step components receive HTML. Fields that sit inside an existing block
+// element are rendered inline to avoid nesting a <p> inside a <p>.
+function renderSteps(steps: Step[] = []): Step[] {
+	return steps.map((step) => ({
+		...step,
+		instruction: renderMarkdown(step.instruction),
+		...(step.observe_items && {
+			observe_items: step.observe_items.map(renderMarkdownInline)
+		}),
+		...(step.reflection_prompt && {
+			reflection_prompt: renderMarkdownInline(step.reflection_prompt)
+		})
+	}));
 }
 
 export function loadAllModules(): ModuleMeta[] {
@@ -64,8 +76,11 @@ export function loadExercise(moduleId: string, exerciseId: string): Exercise {
 	const raw = readFileSync(filePath, 'utf-8');
 	const { data, content } = matter(raw);
 
+	const exercise = data as Omit<Exercise, 'body'>;
+
 	return {
-		...(data as Omit<Exercise, 'body'>),
+		...exercise,
+		steps: renderSteps(exercise.steps),
 		body: renderMarkdown(content)
 	};
 }

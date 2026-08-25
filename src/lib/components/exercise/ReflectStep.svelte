@@ -36,11 +36,11 @@
 		<span class="rounded-md bg-jhu-spirit/15 px-2 py-0.5 font-mono text-[11px] font-medium tracking-wide text-[#1265A8]">REFLECT</span>
 	</div>
 
-	<p class="text-sm leading-relaxed text-gray-700">{step.instruction}</p>
+	<div class="prose prose-sm max-w-none text-sm leading-relaxed text-gray-700">{@html step.instruction}</div>
 
 	{#if step.reflection_prompt}
 		<p class="rounded-lg border border-jhu-spirit/30 bg-jhu-spirit/8 px-4 py-3.5 text-sm leading-relaxed text-jhu-blue italic">
-			{step.reflection_prompt}
+			{@html step.reflection_prompt}
 		</p>
 	{/if}
 
