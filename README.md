@@ -7,6 +7,12 @@ A SvelteKit eLearning application that helps research librarians use graphical A
 3. **Evidence Synthesis & Data** — Build claim-evidence matrices, preserve disagreement, and verify calculations
 4. **Reproducible Research Support** — Test database syntax, teach critical AI use, and package accountable handoffs
 
+An optional fifth module sits outside that product-neutral core:
+
+5. **Bonus: The Skill Marketplace** — Appraise, install, author, and govern AI skills as a collection, using [Kanon and the agentic-skill-library](https://github.com/jhu-sheridan-libraries/agentic-skill-library)
+
+The bonus module is the only one that assumes an agentic coding tool (Claude Code, Codex) rather than a graphical chat product. It offers three paths — plugin, CLI, and browse-only — and all five exercises are completable on any of them, so a cohort without terminal access or install permission can still run it in full.
+
 The curriculum is grounded in the [ACRL AI Competencies for Academic Library Workers](https://www.ala.org/acrl/standards/ai) and the [ALA Guidance on the Use of Artificial Intelligence in Libraries](https://www.ala.org/sites/default/files/2026-06/ALA%20CD%2044.2%20AI%20Guidance%20Document%20-%20Final.pdf). AI output is treated as draft material requiring meaningful human review.
 
 Progress is tracked in AWS DynamoDB. A facilitator dashboard shows cohort progress, pacing alerts, and talking points keyed to the current exercise.

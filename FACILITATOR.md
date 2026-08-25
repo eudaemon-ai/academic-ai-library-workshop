@@ -188,7 +188,7 @@ plugins/library-ai-workshop-facilitator/
 
 The learner-coaching Skill triggers when a learner asks to start or resume the course. The cohort Skill serves the human facilitator, the interview Skill runs fictional role-play, and the review Skill audits an artifact without grading its author. Keep these roles separate so one agent does not silently switch from patron to instructor or evaluator.
 
-The learner and cohort Skills read this guide completely at the start of a new session, then load only the selected module and exercise. This keeps the full 16-exercise curriculum from crowding the conversation. The other two Skills load their focused scenario or rubric reference instead.
+The learner and cohort Skills read this guide completely at the start of a new session, then load only the selected module and exercise. This keeps the full 16-exercise core curriculum — 21 with the optional bonus module — from crowding the conversation. The other two Skills load their focused scenario or rubric reference instead.
 
 ### Plugin Structure
 
@@ -340,6 +340,37 @@ For the teaching exercise, emphasize three points:
 3. learners without premium AI access must be able to meet the same learning objective.
 
 Close with the handoff package and cleanup. Participants should remove unnecessary uploads and connections, then follow local retention policy.
+
+## Bonus Module: The Skill Marketplace (75 minutes, optional)
+
+This module sits outside the product-neutral core. It uses [Kanon and the agentic-skill-library](https://github.com/jhu-sheridan-libraries/agentic-skill-library) — a command-line tool and the artifact library it distributes as the **Context Bazaar** marketplace — to treat AI instructions as objects a library can appraise, describe, vet, author, and weed.
+
+Offer it when a cohort includes systems, technical services, or scholarly communications staff, or when someone asks how the workshop's own Skills were built. Do not offer it as a required continuation of Modules 1–4.
+
+### Three paths, all complete
+
+| Path | Requires | Scope |
+|---|---|---|
+| **Plugin** | Claude Code or Codex, and permission to install plugins | Install the marketplace, browse the catalog, read any artifact in full |
+| **CLI** | The above, plus a terminal with `git` and [Bun](https://bun.sh) | Everything, plus validate, author, compile, and publish |
+| **Browse-only** | A web browser | Appraisal, vetting, and governance done on paper |
+
+All five exercises are completable on any path. Expect most library cohorts to be browse-only; plan the room around that. The judgments that matter most in this module — provenance, licensing, trust, who may approve an install — are made before any software is installed.
+
+### Before you run it
+
+- **Install permission is institutional, not personal.** Confirm before the session whether staff may add a marketplace to a work machine. If they may not, run the whole module browse-only and say why in the opening.
+- **Use scratch workspaces.** No repository holding patron data, assessment data, or licensed content.
+- Do not have anyone connect institutional email, cloud storage, or library systems.
+- The optional `souk-compass` MCP server expects a local Solr instance. Skip it.
+
+### The turn to watch for
+
+Exercise 2 has learners find *this workshop* in the catalog — the `library-ai-workshop` collection is these four Skills, imported, versioned, and stamped with the commit they came from. Seeing their own work as somebody else's catalog record is what makes the appraisal exercise land.
+
+Exercise 3 carries the discovery moment: a skill is a document that an AI tool executes as instructions, and learners installed the marketplace in Exercise 1 before doing any review. Let that sequencing error stand and then name it. Kanon's `validate --security` pass is a floor — prompt injection, dangerous hook commands, dangerous MCP servers, credential-shaped environment variables, invisible Unicode — not a guarantee.
+
+Collect the open questions learners mark in Exercise 5's policy draft. They are the agenda for whoever owns this after the workshop.
 
 ## Product-Neutral Troubleshooting
 
