@@ -48,26 +48,27 @@ You are not expected to memorise a command-line tool. The marketplace ships a sk
 
 This module is the 90-minute library-facing pass. Those references are where you go afterwards, and Exercises 1 and 4 hand you to them directly.
 
-### No terminal required
+### What you need before you start
 
-Earlier drafts of this material assumed a command line. This one does not. Three paths are supported, and **all five exercises are completable on any of them**:
+This module works against a real installed plugin. Before the session you need **Claude Cowork or a coding agent, and permission to install a plugin on the machine you are using**. If your institution has not decided who may install what, that decision has to happen first — which is itself a preview of Exercise 5.
+
+Two paths are supported, and all five exercises work the same way on both:
 
 | Path | You need | How you work |
 |---|---|---|
-| **Cowork** (default) | Claude Cowork | Install the library through menus, then ask questions in plain language |
-| **Coding agent** | Claude Code or Codex | The same, plus a terminal if you want to compile and publish |
-| **Prompt-only** | Any Claude conversation with web access | Install nothing; paste a prompt for each step |
+| **Cowork** (default) | Claude Cowork | Install through menus, then work by asking questions in plain language. No terminal. |
+| **Coding agent** | Claude Code or Codex | The same, plus a terminal if you want to compile and publish your own artifact |
 
-**To install in Cowork**: open Customize in the sidebar, then Plugins, then Browse plugins, then Add marketplace. Enter `jhu-sheridan-libraries/agentic-skill-library`. Install the plugin named `context-bazaar`.
+**To install in Cowork**: open Customize in the sidebar, then Plugins, then Browse plugins, then Add marketplace. Enter `jhu-sheridan-libraries/agentic-skill-library` — the short owner/repo form is enough. Then install the plugin named `context-bazaar`.
 
-If you do not see an Add marketplace option, stop there. Some builds do not offer it, and many institutions restrict which plugins staff may add. Use the prompt-only path instead — it reaches every outcome in this module, and being told no by your own institution is a realistic and instructive start to a lesson about governing what you install.
+**In Claude Code**: run `/plugin marketplace add` with the repository URL, then `/plugin install context-bazaar`.
 
 Two companion files sit in the workshop folder beside `WORKSPACE-BRIEF.md`:
 
-- `SKILL-MARKETPLACE-PROMPTS.md` — every prompt in this module, ready to copy and paste, each one written to work whether or not you installed anything.
+- `SKILL-MARKETPLACE-PROMPTS.md` — every prompt in this module, ready to copy and paste into Cowork.
 - `SKILL-MARKETPLACE-HANDOUT.md` — the three working sheets: an appraisal crosswalk, a vetting checklist, and a local policy template.
 
-Both work on paper. Several of the most important judgments here — provenance, licensing, trust, who may approve an install — are made before any software is installed at all.
+You will not need a terminal for any exercise. You will need the plugin.
 
 ### Vocabulary
 

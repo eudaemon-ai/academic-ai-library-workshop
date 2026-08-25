@@ -86,5 +86,5 @@ If the learner wants to resume later, provide a short, non-sensitive resume note
 - `references/AI-TOOL-GUIDE.md`: privacy, evidence, source, and human-review rules.
 - `references/course/modules/`: module and exercise Markdown copied from the workshop application.
 - `references/course/sample-data/`: simulated learner files used by the exercises.
-- `references/course/SKILL-MARKETPLACE-PROMPTS.md`: every prompt in the optional bonus module, written to work whether or not the learner installed anything. Offer it first to any learner without a terminal, and to anyone whose institution does not permit installing plugins.
+- `references/course/SKILL-MARKETPLACE-PROMPTS.md`: every prompt in the optional bonus module, with the plugin install steps at the top. That module requires the context-bazaar plugin; if a learner cannot install it, say so plainly and suggest another module rather than improvising a substitute.
 - `references/course/SKILL-MARKETPLACE-HANDOUT.md`: appraisal crosswalk, vetting checklist, and policy template for the optional bonus module. Offer it during Module 5 exercises 2, 3, and 5. It works on paper, so it is the fallback when a learner cannot install anything.

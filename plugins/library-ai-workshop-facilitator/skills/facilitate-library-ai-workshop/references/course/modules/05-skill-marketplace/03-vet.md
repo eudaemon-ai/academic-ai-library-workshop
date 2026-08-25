@@ -7,10 +7,12 @@ steps:
   - index: 0
     label: "Get the raw text"
     type: "prompt"
-    instruction: "A skill is instructions. To vet it you must read it, not read about it — and you must read the files packaged beside it, because those are where a skill gains the ability to run commands and reach the network."
+    instruction: "Note what this prompt does not use. The catalog tool you used in Exercise 2 returns an artifact's `knowledge.md` and nothing else — and the files beside it are precisely where a skill gains the ability to run commands and reach the network. So read the folder, not the catalog entry, and read the copy that actually landed on your machine."
     prompt_text: |
-      In https://github.com/jhu-sheridan-libraries/agentic-skill-library
-      open the folder kanon/knowledge/review-ai-research-output/.
+      Find the review-ai-research-output artifact in the context-bazaar plugin
+      you installed. It is the folder kanon/knowledge/review-ai-research-output/
+      inside the installed plugin; if you cannot locate it on disk, read the same
+      folder in https://github.com/jhu-sheridan-libraries/agentic-skill-library
 
       Show me the full text of knowledge.md. Then list every other file in that
       folder and show me the contents of each one, especially any hooks file or
@@ -18,7 +20,7 @@ steps:
 
       Show the text as it is written. Do not summarise, tidy, or skip anything.
     checkpoint: "You have the artifact body in front of you, plus the contents of every file packaged with it."
-    facilitator_note: "Insist on the sibling files. The body is usually benign. If the assistant summarises instead of quoting, send it back — a summary is not something you can vet."
+    facilitator_note: "Two things to insist on. The sibling files, because the body is nearly always benign. And quoted text rather than summary — a summary is not something you can vet. The catalog tool genuinely cannot do this job, which is the most useful thing this step teaches."
   - index: 1
     label: "Apply the checklist"
     type: "prompt"

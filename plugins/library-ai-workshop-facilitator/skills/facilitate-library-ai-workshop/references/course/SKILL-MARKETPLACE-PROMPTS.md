@@ -2,16 +2,37 @@
 
 Every prompt used in the bonus module, *The Skill Marketplace*, in one place. Copy one, paste it, read the answer, move on.
 
-## How to use this in Claude Cowork
+## Before you start: install the plugin
 
-Cowork is Claude's workspace for non-coding work. You do not need a terminal, and you do not need to have installed anything: paste a prompt, wait, read. Each prompt below names the repository it is about, so it works whether the library is installed in your assistant or being read from the web for the first time.
+This module works against a real installed plugin, and the prompts below assume it.
+
+In **Claude Cowork**: open Customize in the sidebar, then Plugins, then Browse plugins, then Add marketplace. Enter:
+
+```
+jhu-sheridan-libraries/agentic-skill-library
+```
+
+Then install the plugin named `context-bazaar`.
+
+In **Claude Code**:
+
+```
+/plugin marketplace add https://github.com/jhu-sheridan-libraries/agentic-skill-library
+/plugin install context-bazaar
+```
+
+Confirm it worked before going further — Exercise 1's third prompt will tell you, since it lists what is installed.
+
+## How to use this pack
+
+Copy a prompt, paste it, read the answer, move on. You do not need a terminal for any exercise in this module.
 
 Two habits before you start:
 
 - Work in a folder you are willing to throw away. Nothing here should touch patron data, assessment data, or licensed content.
-- When an answer sounds confident, check one detail against the repository yourself. That habit is the point of Exercise 3, and it applies to the answers you get from these prompts too.
+- When an answer sounds confident, check one detail against the source yourself. That habit is the point of Exercise 3, and it applies to the answers you get from these prompts too.
 
-If you would rather install the library so your assistant can read it directly: in Cowork, go to Customize in the sidebar, then Plugins, then Browse plugins, then Add marketplace, and enter `jhu-sheridan-libraries/agentic-skill-library`. Install the plugin named `context-bazaar`. If you do not see an Add marketplace option — some builds and some organisation policies do not offer it — use the prompts below instead. They reach every outcome in the module.
+Some prompts name the repository directly rather than relying on the plugin's catalog tools. That is deliberate: those tools return an artifact's main file and nothing else, and several exercises need the files packaged beside it.
 
 The repository referred to throughout is:
 
@@ -19,7 +40,6 @@ The repository referred to throughout is:
 https://github.com/jhu-sheridan-libraries/agentic-skill-library
 ```
 
----
 
 ## Exercise 1 — Add the Marketplace and Meet Your Guide
 
@@ -48,15 +68,6 @@ For each one, give me the name, one sentence on what it does, and whether
 it is aimed at developers or at some other audience.
 ```
 
-If you have not installed the plugin, ask instead:
-
-```
-List the skills published in
-https://github.com/jhu-sheridan-libraries/agentic-skill-library
-under kanon/skills/. For each, give the name, one sentence on what it does,
-and whether it is aimed at developers or at some other audience.
-```
-
 ### 1.4 — Meet your guide
 
 ```
@@ -64,17 +75,6 @@ Use the kanon skill. What is Kanon, and what reference material does this
 skill have available to teach me?
 
 List each reference, what it covers, and roughly how long it would take.
-Do not walk me through any of them yet.
-```
-
-Without the plugin installed:
-
-```
-Read kanon/skills/kanon/SKILL.md in
-https://github.com/jhu-sheridan-libraries/agentic-skill-library
-and list the files in the references folder beside it.
-
-What is Kanon, and what would each of those references teach me?
 Do not walk me through any of them yet.
 ```
 
@@ -184,8 +184,6 @@ knowledge artifact.
 Summarise the nine steps, then tell me what its metadata-quality checklist
 requires and what its most common listed mistakes are.
 ```
-
-Without the plugin installed, replace the first line with: *Read kanon/skills/kanon/references/authoring.md in https://github.com/jhu-sheridan-libraries/agentic-skill-library and give me its guide for creating a first knowledge artifact.*
 
 ### 4.2 — Scaffold an artifact
 

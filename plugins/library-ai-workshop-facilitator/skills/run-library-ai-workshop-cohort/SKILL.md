@@ -85,5 +85,5 @@ Do not rank participants or infer competence from completion speed. Keep any han
 - `references/AI-TOOL-GUIDE.md`: data boundaries, source standards, outputs, and the human review gate.
 - `references/course/modules/`: module overviews and exercise checkpoints.
 - `references/course/sample-data/`: simulated files for demonstrations and fallback activities.
-- `references/course/SKILL-MARKETPLACE-PROMPTS.md`: copy-paste prompts for the optional bonus module, usable in Claude Cowork or any Claude conversation with web access. This is the default path for a library cohort; treat installing the plugin as optional.
+- `references/course/SKILL-MARKETPLACE-PROMPTS.md`: copy-paste prompts for the optional bonus module, for use in Claude Cowork once the context-bazaar plugin is installed. Installing it is a prerequisite of that module; confirm cohort install permission during preparation.
 - `references/course/SKILL-MARKETPLACE-HANDOUT.md`: printable working sheets for the optional bonus module — appraisal crosswalk, vetting checklist, and local policy template. Hand out to a cohort that cannot install software; the session then loses none of its learning outcomes.

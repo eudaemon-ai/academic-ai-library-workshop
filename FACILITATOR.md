@@ -42,6 +42,7 @@ The course is aligned with the [ACRL AI Competencies for Academic Library Worker
 - Disable or ask participants not to enable email, drives, calendars, and organizational connectors.
 - Test Modules 1 and 2 in at least two of the products participants will use.
 - Share the workshop URL and the `src/content/library-context/` folder.
+- If you are running the optional bonus module, confirm that participants may install a plugin on the machine they will use, and which route is permitted. That module depends on it.
 
 ### Day Before
 
@@ -347,24 +348,20 @@ This module sits outside the product-neutral core. It uses [Kanon and the agenti
 
 Offer it when a cohort includes systems, technical services, or scholarly communications staff, or when someone asks how the workshop's own Skills were built. Do not offer it as a required continuation of Modules 1–4.
 
-### Three paths, no terminal required
+### Two paths, no terminal required
 
 | Path | Requires | Scope |
 |---|---|---|
 | **Cowork** (default) | Claude Cowork | Install through menus, then work by asking questions |
 | **Coding agent** | Claude Code or Codex | The same, plus optional authoring, compiling, and publishing |
-| **Prompt-only** | Any Claude conversation with web access | Everything, installing nothing; paste a prompt per step |
 
-All five exercises are completable on any path. `SKILL-MARKETPLACE-PROMPTS.md` carries every prompt, each written to work whether or not the plugin is installed, so a learner can switch paths mid-session without losing their place.
+Both install the plugin; the module works against it throughout. `SKILL-MARKETPLACE-PROMPTS.md` carries every prompt ready to paste, so no participant needs a terminal at any point.
 
-In Cowork the install is Customize → Plugins → Browse plugins → Add marketplace, entering `jhu-sheridan-libraries/agentic-skill-library`, then installing `context-bazaar`. Whether that option appears varies by build, and organisations can restrict which plugins staff may add — there is an Anthropic help article for admins on managing plugins org-wide. Do not build your session on it being there.
-
-Expect a good share of a library cohort to end up prompt-only, by preference or by policy. That costs no learning outcomes. The judgments that matter most here — provenance, licensing, trust, who may approve an install — are all made before any software is installed.
+In Cowork the install is Customize → Plugins → Browse plugins → Add marketplace, entering `jhu-sheridan-libraries/agentic-skill-library`, then installing `context-bazaar`. In Claude Code it is `/plugin marketplace add` with the repository URL, then `/plugin install context-bazaar`.
 
 ### Before you run it
 
-- **Install permission is institutional, not personal.** Confirm before the session whether staff may add a marketplace on a work machine. If they may not, run the whole module prompt-only and say why in the opening — it is a live example of the governance the module is about.
-- **Do not troubleshoot installs from the front of the room.** Give it a minute, then move the learner to the prompt pack. Exercise 1 is designed so the module continues unaffected from its third step onward.
+- **Install permission is a prerequisite, and it is institutional rather than personal.** Confirm a week out that participants may add a marketplace on the machine they will use. Organisations can restrict which plugins staff may add, and Anthropic publishes admin guidance on managing plugins org-wide. Without that permission the module cannot run as written — resolve it before the session, not in the room.
 - **Use scratch workspaces.** No repository holding patron data, assessment data, or licensed content.
 - Do not have anyone connect institutional email, cloud storage, or library systems.
 - The optional `souk-compass` MCP server expects a local Solr instance. Skip it.
@@ -391,20 +388,19 @@ One thing to know before you are asked: the `kanon` skill's setup instructions s
 
 Two things for this module ship, both in `library-context.zip` and in this plugin at `references/course/`:
 
-- `SKILL-MARKETPLACE-PROMPTS.md` — every prompt in the module, numbered by exercise and step, each written to work whether or not anything is installed. This is what a learner without a terminal works from.
+- `SKILL-MARKETPLACE-PROMPTS.md` — every prompt in the module, numbered by exercise and step, with the install instructions at the top. This is what a learner without a terminal works from.
 - `SKILL-MARKETPLACE-HANDOUT.md` — the three working sheets: an appraisal crosswalk for Exercise 2, a vetting checklist and decision block for Exercise 3, and a fill-in local policy template for Exercise 5. Print it.
 
-Between them the module runs with no terminal, no plugin, and — apart from the prompts themselves — no network.
+Between them the module runs with no terminal. The plugin itself is not bundled — see below.
 
 Kanon and the Context Bazaar marketplace themselves are not bundled. The module runs against the upstream repository live, so there is no third-party copy to keep current.
 
-If your learners cannot add a marketplace — no plugin support, or local policy forbids it — do not treat the module as blocked:
+If the Cowork marketplace route is unavailable to your learners, there are other ways in:
 
-- The **prompt-only path** covers all five exercises with nothing installed. It is the path most library cohorts will take.
 - A single skill can be **copied by hand**: `kanon/skills/<name>/` upstream is a plain `SKILL.md` plus `references/`, and dropping that directory into `.claude/skills/` (project) or `~/.claude/skills/` (personal) is the whole installation. The `kanon` skill is the one worth copying.
 - A pinned install is `kanon install <artifact> --harness <harness> --from-release <tag>`, against upstream's tagged releases.
 
-Say plainly which of these your institution permits, in the opening. "We are not allowed to install this, so we will read it instead" is a complete and honest framing of the session, and it loses none of the learning outcomes.
+Settle this before the session. Which route your institution permits is a preparation question, not something to discover with twenty people watching.
 
 ## Product-Neutral Troubleshooting
 

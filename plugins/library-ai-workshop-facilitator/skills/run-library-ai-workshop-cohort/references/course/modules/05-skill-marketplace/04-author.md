@@ -30,7 +30,7 @@ steps:
       Leave the body empty for now. Show me the frontmatter and explain what each
       field commits me to.
     checkpoint: "You have a complete set of metadata fields and can say what each one commits you to."
-    facilitator_note: "At a terminal the equivalent is an interactive wizard, `kanon new` — the appendix of the prompt pack has it. The wizard asks the same questions this prompt does; neither answers them for you."
+    facilitator_note: "At a terminal the equivalent is an interactive wizard, `kanon new`, and the appendix of the prompt pack has it. The wizard asks the same questions this prompt does. Neither answers them for you."
 
   - index: 2
     label: "Write the knowledge"
