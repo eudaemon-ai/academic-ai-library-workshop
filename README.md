@@ -30,6 +30,7 @@ See `FACILITATOR.md` for the full run-of-show guide.
 - A ChatGPT, Claude, Gemini, or Microsoft 365 Copilot account that participants may use for the workshop
 - File upload access and, for Module 2, web search or a longer-running research mode
 - The `src/content/library-context/` folder accessible to participants
+- **For the optional bonus module only**: nothing extra is required. Its plugin and CLI paths use Claude Code or Codex, a terminal, and [Bun](https://bun.sh), but its browse-only path needs just a web browser and works against the upstream repository. The workshop release package does not bundle Kanon or the Context Bazaar marketplace — see [Distribution](#distribution) below.
 
 ---
 
@@ -138,6 +139,28 @@ npm run sync:facilitator-plugin
 ```
 
 The repo-local marketplace entry is `.agents/plugins/marketplace.json`. See `FACILITATOR.md` for the agent teaching protocol, validation commands, installation steps, and test scenarios.
+
+---
+
+## Distribution
+
+Two separate things ship from this repository, and the bonus module deliberately depends on neither.
+
+**The workshop materials release.** `.github/workflows/release-materials.yml` packages `src/content/library-context/` as `library-context.zip` on the `workshop-materials` release whenever that folder changes. It contains the standing brief and simulated data — what a learner needs in a graphical AI tool. Modules 1–4 depend on it.
+
+**The facilitator plugin.** `plugins/library-ai-workshop-facilitator/`, installed from the repo-local marketplace at `.agents/plugins/marketplace.json`, carrying its own copy of the course.
+
+**Kanon and the Context Bazaar marketplace are not bundled into either, by design.** Module 5 works against the upstream [`jhu-sheridan-libraries/agentic-skill-library`](https://github.com/jhu-sheridan-libraries/agentic-skill-library) at whatever version a learner finds there. Vendoring a copy into our release would mean redistributing third-party code under a different licence (BSL-1.0 plugin, MIT repository) inside an MPL-2.0 package, pinning a snapshot that immediately begins to drift, and implicitly vouching for software that Exercise 3 exists to teach learners to vet for themselves.
+
+### If learners cannot use `/plugin marketplace add`
+
+Manual installation is a first-class upstream path, not a workaround. In rough order of effort:
+
+1. **Copy a single skill.** `kanon/skills/<name>/` in the upstream repository is a plain `SKILL.md` plus a `references/` folder. Copy the directory into `.claude/skills/` in a project, or `~/.claude/skills/` for personal use. This is all that is needed for the `kanon` skill itself, which is what Module 5 leans on most.
+2. **Install a pinned artifact.** `kanon install <artifact> --harness <harness> --from-release <tag>` pulls from an upstream tagged release. Upstream publishes per-harness `dist-<harness>.tar.gz` assets and a release manifest, so an install can be pinned and reviewed rather than tracking `main`.
+3. **Clone and build locally.** `git clone`, then `bun run dev build --harness <harness>` and `bun run dev install <artifact> --harness <harness> --source .`.
+
+Whichever route a library takes, the review in Module 5's Exercise 3 should happen before the install, not after.
 
 ---
 

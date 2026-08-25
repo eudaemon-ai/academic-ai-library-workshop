@@ -382,6 +382,18 @@ Point learners who want depth at the last three rather than extending the sessio
 
 One thing to know before you are asked: the `kanon` skill's setup instructions still name `agentic-skill-forge`, the repository's former name. The old name redirects, so nothing breaks. The module treats this as a teaching moment about documentation drift rather than as an erratum — if a learner spots it before Exercise 3, that is the exercise working early.
 
+### How learners get it
+
+Nothing for this module ships in `library-context.zip` or in the facilitator plugin. The module runs against the upstream repository live, so there is nothing to hand out and nothing to keep current.
+
+If your learners cannot add a marketplace — no plugin support, or local policy forbids it — do not treat the module as blocked:
+
+- The **browse-only path** covers all five exercises using a web browser and the upstream repository. It is the path most library cohorts will take.
+- A single skill can be **copied by hand**: `kanon/skills/<name>/` upstream is a plain `SKILL.md` plus `references/`, and dropping that directory into `.claude/skills/` (project) or `~/.claude/skills/` (personal) is the whole installation. The `kanon` skill is the one worth copying.
+- A pinned install is `kanon install <artifact> --harness <harness> --from-release <tag>`, against upstream's tagged releases.
+
+Say plainly which of these your institution permits, in the opening. "We are not allowed to install this, so we will read it instead" is a complete and honest framing of the session, and it loses none of the learning outcomes.
+
 ## Product-Neutral Troubleshooting
 
 ### A learner lacks project or notebook features

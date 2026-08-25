@@ -26,8 +26,8 @@ src/
 │   ├── stores/           # Svelte 5 $state progress cache
 │   └── utils/            # formatDuration, formatRelativeTime, renderMarkdown
 ├── content/
-│   ├── library-context/  # AGENTS.md and sample data for workshop participants
-│   └── modules/          # Exercise markdown files (01-reference, 02-cataloging, 03-collection-dev)
+│   ├── library-context/  # WORKSPACE-BRIEF.md and sample data for workshop participants
+│   └── modules/          # Exercise markdown files (01-reference … 04-leadership, plus optional 05-skill-marketplace)
 ├── routes/
 │   ├── /                 # Landing page (module cards)
 │   ├── /learn/[moduleId]/[exerciseId]  # Learner exercise view
@@ -36,7 +36,7 @@ src/
 └── lib/components/
     ├── layout/            # AppNav, Sidebar, ProgressBar
     ├── modules/           # ModuleCard, ModuleOverview, ExerciseListItem
-    ├── exercise/          # StepShell, TerminalStep, PromptStep, ObserveStep, ReflectStep, DiscoveryMoment
+    ├── exercise/          # StepShell, WorkspaceStep, PromptStep, ObserveStep, ReflectStep, DiscoveryMoment
     ├── facilitator/       # CohortProgressTable, ModuleHeatmap, PacingAlert, TalkingPoints
     └── ui/                # CopyButton, Badge, Modal, LearnerIdentityModal
 ```

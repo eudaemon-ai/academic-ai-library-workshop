@@ -25,7 +25,7 @@ src/
 │   └── utils/            # formatDuration, formatRelativeTime, renderMarkdown
 ├── content/
 │   ├── library-context/  # WORKSPACE-BRIEF.md and simulated participant data
-│   └── modules/          # Exercise markdown files (01-reference, 02-cataloging, 03-collection-dev)
+│   └── modules/          # Exercise markdown files (01-reference … 04-leadership, plus optional 05-skill-marketplace)
 ├── routes/
 │   ├── /                 # Landing page (module cards)
 │   ├── /learn/[moduleId]/[exerciseId]  # Learner exercise view
