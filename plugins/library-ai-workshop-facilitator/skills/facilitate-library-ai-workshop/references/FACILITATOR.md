@@ -341,7 +341,7 @@ For the teaching exercise, emphasize three points:
 
 Close with the handoff package and cleanup. Participants should remove unnecessary uploads and connections, then follow local retention policy.
 
-## Bonus Module: The Skill Marketplace (75 minutes, optional)
+## Bonus Module: The Skill Marketplace (85 minutes, optional)
 
 This module sits outside the product-neutral core. It uses [Kanon and the agentic-skill-library](https://github.com/jhu-sheridan-libraries/agentic-skill-library) — a command-line tool and the artifact library it distributes as the **Context Bazaar** marketplace — to treat AI instructions as objects a library can appraise, describe, vet, author, and weed.
 
@@ -371,6 +371,16 @@ Exercise 2 has learners find *this workshop* in the catalog — the `library-ai-
 Exercise 3 carries the discovery moment: a skill is a document that an AI tool executes as instructions, and learners installed the marketplace in Exercise 1 before doing any review. Let that sequencing error stand and then name it. Kanon's `validate --security` pass is a floor — prompt injection, dangerous hook commands, dangerous MCP servers, credential-shaped environment variables, invisible Unicode — not a guarantee.
 
 Collect the open questions learners mark in Exercise 5's policy draft. They are the agenda for whoever owns this after the workshop.
+
+### Let the tool teach itself
+
+Do not prepare to teach Kanon from the front of the room. The marketplace ships a skill called `kanon` whose job is to teach the tool in plain language, and it was written for library staff — its authoring guide teaches artifact metadata through Dublin Core. Exercise 1 has learners meet it; Exercise 4 has them work from its authoring guide rather than from the exercise page.
+
+It carries six references, reachable by asking for them by name: the authoring guide, the command reference, a twenty-lesson tutorial, a three-to-four hour self-paced course on skill creation, a curriculum guide, and an optional Souk Compass practice.
+
+Point learners who want depth at the last three rather than extending the session. The curriculum guide in particular is aimed at whoever would own this programme afterwards: it carries learning paths, a curriculum map, assessment strategy, accessibility considerations, and a production-readiness gate.
+
+One thing to know before you are asked: the `kanon` skill's setup instructions still name `agentic-skill-forge`, the repository's former name. The old name redirects, so nothing breaks. The module treats this as a teaching moment about documentation drift rather than as an erratum — if a learner spots it before Exercise 3, that is the exercise working early.
 
 ## Product-Neutral Troubleshooting
 

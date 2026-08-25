@@ -13,6 +13,8 @@ An optional fifth module sits outside that product-neutral core:
 
 The bonus module is the only one that assumes an agentic coding tool (Claude Code, Codex) rather than a graphical chat product. It offers three paths — plugin, CLI, and browse-only — and all five exercises are completable on any of them, so a cohort without terminal access or install permission can still run it in full.
 
+It does not try to teach the CLI from scratch. The marketplace ships a `kanon` skill written for library staff — its authoring guide teaches artifact metadata through Dublin Core — and the module hands learners to it, then points anyone wanting depth at that skill's twenty-lesson tutorial, self-paced course, and curriculum guide.
+
 The curriculum is grounded in the [ACRL AI Competencies for Academic Library Workers](https://www.ala.org/acrl/standards/ai) and the [ALA Guidance on the Use of Artificial Intelligence in Libraries](https://www.ala.org/sites/default/files/2026-06/ALA%20CD%2044.2%20AI%20Guidance%20Document%20-%20Final.pdf). AI output is treated as draft material requiring meaningful human review.
 
 Progress is tracked in AWS DynamoDB. A facilitator dashboard shows cohort progress, pacing alerts, and talking points keyed to the current exercise.

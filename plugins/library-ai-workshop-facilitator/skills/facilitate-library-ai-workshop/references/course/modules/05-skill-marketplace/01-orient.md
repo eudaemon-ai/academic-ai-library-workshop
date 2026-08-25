@@ -1,7 +1,7 @@
 ---
 id: "01-orient"
-title: "Add the Marketplace and Take Inventory"
-estimated_minutes: 15
+title: "Add the Marketplace and Meet Your Guide"
+estimated_minutes: 20
 discovery_moment: false
 steps:
   - index: 0
@@ -49,6 +49,16 @@ steps:
     checkpoint: "You get a table of roughly twenty skills, most of them developer-facing, one of them named kanon."
     facilitator_note: "This is answered by the `skill-library` skill reading a generated list, not by the model recalling it. If a learner's tool answers without the plugin installed, it is guessing — a useful thing to catch in the room."
   - index: 3
+    label: "Meet your guide"
+    type: "prompt"
+    instruction: "One of those skills, `kanon`, exists to teach you the tool. Ask it what it can teach you before you ask it anything else."
+    prompt_text: |
+      Use the `kanon` skill. What is Kanon, and what reference material does this skill have available to teach me?
+
+      List each reference, what it covers, and roughly how long it would take. Do not walk me through any of them yet.
+    checkpoint: "You get six references — authoring guide, command reference, tutorial, self-paced course, curriculum guide, and Souk Compass practice — not a lecture."
+    facilitator_note: "Browse-only learners read `kanon/skills/kanon/SKILL.md` and list the files in the adjacent `references/` folder. The point stands either way: the skill is a finding aid, and the references are the boxes."
+  - index: 4
     label: "Inspect what you added"
     type: "observe"
     instruction: "You did not install a document. You installed standing instructions and two background services. Confirm each item from the manifests, not from memory."
@@ -58,7 +68,8 @@ steps:
       - "A second MCP server, `souk-compass`, that expects a local Solr instance and is optional for this module"
       - "A declared license (BSL-1.0 on the plugin, MIT on the repository) and a named author"
       - "No independent verification of the claim that the tool collects no telemetry — you are trusting the statement"
-  - index: 4
+      - "Progressive disclosure: each skill loads a short instruction file first and pulls its longer references only when the conversation calls for them"
+  - index: 5
     label: "Reflect on authority"
     type: "reflect"
     instruction: "You have just changed what an AI tool does on your machine, on your own authority."
@@ -72,3 +83,5 @@ A marketplace is a repository plus a manifest that says "these plugins are insta
 The library being added here is **Context Bazaar**, distributed from the Johns Hopkins Sheridan Libraries' `agentic-skill-library` repository. It carries just over sixty knowledge artifacts across six collections, compiled by a command-line tool called **Kanon**. One of those collections is your own workshop — you will find it in the next exercise.
 
 Take the inventory step seriously. The gap between "I installed a helpful thing" and "I can list what it added" is the whole subject of this module.
+
+One of the things it added is a guide. The `kanon` skill exists to teach you the tool in plain language, and it carries six references — an authoring guide, a command reference, a twenty-lesson tutorial, a self-paced course, a curriculum guide for library staff, and an optional semantic-search practice. You will use two of them in this module. Knowing the other four are there is the point of meeting it now.
