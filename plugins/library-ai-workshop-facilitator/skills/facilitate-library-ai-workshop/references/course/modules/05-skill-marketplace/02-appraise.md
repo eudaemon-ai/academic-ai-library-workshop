@@ -7,28 +7,38 @@ steps:
   - index: 0
     label: "Survey the collections"
     type: "prompt"
-    instruction: "The plugin exposes three catalog tools to your assistant: `collection_list`, `catalog_list`, and `artifact_content`. Start at the top."
+    instruction: "With the plugin installed your assistant reads the catalog through three dedicated tools. Without it, the same prompt sends the assistant to the repository. Either way something is genuinely being read — start at the top."
     prompt_text: |
-      List the Context Bazaar collections with their member counts and descriptions.
+      List the collections in the Context Bazaar catalog at
+      https://github.com/jhu-sheridan-libraries/agentic-skill-library
+      with their member counts and descriptions.
 
-      Then tell me which collections you would expect an academic library to have any use for, and which are aimed at software teams.
+      Then tell me which ones an academic library might have any use for,
+      and which are aimed at software teams.
     checkpoint: "You see six collections — kiro-official, neon-caravan, jh-drcc, byron-powers, library-ai-workshop, archon — with counts."
-    facilitator_note: "Browse-only learners read `kanon/collections/*.yaml` in the repository, which carries the same metadata. The counts are derived at runtime from artifact frontmatter, so a collection manifest never lists its own members."
+    facilitator_note: "The counts are derived at runtime from artifact metadata, so a collection manifest never lists its own members. Learners reading from the repository will notice this in `kanon/collections/*.yaml` — a good moment to ask why a catalogue would be built that way."
   - index: 1
     label: "Find yourself in the catalog"
     type: "prompt"
     instruction: "One of those collections is this workshop. Look at how someone else described your work."
     prompt_text: |
-      List every artifact in the `library-ai-workshop` collection. For each, show me the name, type, description, version, maturity, trust lane, license, and which harnesses it targets.
+      List every artifact in the library-ai-workshop collection in
+      https://github.com/jhu-sheridan-libraries/agentic-skill-library
+
+      For each, show me the name, type, description, version, maturity,
+      trust lane, licence, and which harnesses it targets.
     checkpoint: "Four artifacts, all MPL-2.0, all maturity `experimental` and trust `community`."
   - index: 2
     label: "Open one record in full"
     type: "prompt"
     instruction: "A listing is not the item. Ask for the artifact itself."
     prompt_text: |
-      Show me the full content of the `review-ai-research-output` artifact, including its frontmatter and any note about where it came from.
+      Show me the full content of the review-ai-research-output artifact in
+      https://github.com/jhu-sheridan-libraries/agentic-skill-library
+      including its frontmatter and any note about where it came from.
 
-      Then tell me: what would this skill instruct an AI tool to do, and what would it instruct the tool not to do?
+      Then tell me: what would this skill instruct an AI tool to do, and what
+      would it instruct the tool not to do?
     checkpoint: "You can see a provenance note naming the upstream repository and the exact commit it was imported from."
   - index: 3
     label: "Map metadata to selection criteria"
@@ -53,7 +63,7 @@ steps:
 
 The catalog here is a generated file, `catalog.json`, rebuilt from the artifacts themselves whenever the library changes. Collections do not list their members; each artifact declares which collections it belongs to, and membership is derived. Delete an artifact and it leaves its collections automatically — a deliberate design choice, and a familiar one to anyone who has maintained a bib record and a holdings record separately.
 
-Your assistant reads this catalog through three tools rather than by guessing: `collection_list`, `catalog_list`, and `artifact_content`. When you ask "what's in this collection", something is actually being read. That is worth noticing, because for most of this workshop you have been training yourself to assume the opposite.
+When you ask "what's in this collection", something is actually being read — three dedicated catalogue tools if you installed the plugin, the repository itself if you did not. That is worth noticing, because for most of this workshop you have been training yourself to assume the opposite. It is also worth testing: ask a follow-up about a detail and see whether the answer stays consistent.
 
 The `library-ai-workshop` collection is the four Skills from this repository, imported into someone else's library, given a version, assigned a trust lane, and stamped with the commit they were taken from. This is your work as a catalog record. Read it the way you would read a vendor's description of your own institutional repository.
 

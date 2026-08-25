@@ -11,7 +11,7 @@ An optional fifth module sits outside that product-neutral core:
 
 5. **Bonus: The Skill Marketplace** — Appraise, install, author, and govern AI skills as a collection, using [Kanon and the agentic-skill-library](https://github.com/jhu-sheridan-libraries/agentic-skill-library)
 
-The bonus module is the only one that assumes an agentic coding tool (Claude Code, Codex) rather than a graphical chat product. It offers three paths — plugin, CLI, and browse-only — and all five exercises are completable on any of them, so a cohort without terminal access or install permission can still run it in full.
+The bonus module needs no terminal. Its default surface is **Claude Cowork**, where the library installs through menus (Customize → Plugins → Browse plugins → Add marketplace), and its fallback is a prompt-only path that installs nothing at all: every step ships as a copy-paste prompt that works in any Claude conversation with web access. Claude Code and Codex work too, and add the optional authoring and publishing steps. All five exercises are completable on all three paths, so a cohort with no terminal and no install permission runs it in full.
 
 It does not try to teach the CLI from scratch. The marketplace ships a `kanon` skill written for library staff — its authoring guide teaches artifact metadata through Dublin Core — and the module hands learners to it, then points anyone wanting depth at that skill's twenty-lesson tutorial, self-paced course, and curriculum guide.
 
@@ -30,7 +30,7 @@ See `FACILITATOR.md` for the full run-of-show guide.
 - A ChatGPT, Claude, Gemini, or Microsoft 365 Copilot account that participants may use for the workshop
 - File upload access and, for Module 2, web search or a longer-running research mode
 - The `src/content/library-context/` folder accessible to participants
-- **For the optional bonus module only**: nothing extra is required. Its plugin and CLI paths use Claude Code or Codex, a terminal, and [Bun](https://bun.sh), but its browse-only path needs just a web browser and works against the upstream repository. The workshop release package carries `SKILL-MARKETPLACE-HANDOUT.md` — printable working sheets for that module — but does not bundle Kanon or the Context Bazaar marketplace itself. See [Distribution](#distribution).
+- **For the optional bonus module only**: no terminal and no extra account. Claude Cowork is the default surface; a prompt-only path needs nothing installed. The release package carries `SKILL-MARKETPLACE-PROMPTS.md` and `SKILL-MARKETPLACE-HANDOUT.md` for that module, but does not bundle Kanon or the Context Bazaar marketplace itself. See [Distribution](#distribution).
 
 ---
 
@@ -146,19 +146,20 @@ The repo-local marketplace entry is `.agents/plugins/marketplace.json`. See `FAC
 
 Two separate things ship from this repository, and the bonus module deliberately depends on neither.
 
-**The workshop materials release.** `.github/workflows/release-materials.yml` packages `src/content/library-context/` as `library-context.zip` on the `workshop-materials` release whenever that folder changes. It contains the standing brief, the simulated data used by Modules 1–4, and `SKILL-MARKETPLACE-HANDOUT.md` — appraisal crosswalk, vetting checklist, and local policy template for the bonus module. The handout is our own material under MPL-2.0, it works on paper, and it is what a browse-only or offline cohort needs.
+**The workshop materials release.** `.github/workflows/release-materials.yml` packages `src/content/library-context/` as `library-context.zip` on the `workshop-materials` release whenever that folder changes. It contains the standing brief, the simulated data used by Modules 1–4, and two companion documents for the bonus module: `SKILL-MARKETPLACE-PROMPTS.md`, every prompt in that module written to work whether or not anything is installed, and `SKILL-MARKETPLACE-HANDOUT.md`, its appraisal crosswalk, vetting checklist, and local policy template. Both are our own material under MPL-2.0 and both work on paper — between them they are what a cohort with no terminal and no install permission needs.
 
 **The facilitator plugin.** `plugins/library-ai-workshop-facilitator/`, installed from the repo-local marketplace at `.agents/plugins/marketplace.json`, carrying its own copy of the course.
 
 **Kanon and the Context Bazaar marketplace are not bundled into either, by design.** Module 5 works against the upstream [`jhu-sheridan-libraries/agentic-skill-library`](https://github.com/jhu-sheridan-libraries/agentic-skill-library) at whatever version a learner finds there. Vendoring a copy into our release would mean redistributing third-party code under a different licence (BSL-1.0 plugin, MIT repository) inside an MPL-2.0 package, pinning a snapshot that immediately begins to drift, and implicitly vouching for software that Exercise 3 exists to teach learners to vet for themselves.
 
-### If learners cannot use `/plugin marketplace add`
+### If learners cannot install anything
 
-Manual installation is a first-class upstream path, not a workaround. In rough order of effort:
+First, they are not blocked: the prompt pack completes every exercise with nothing installed. If a library does want the plugin, manual installation is a first-class upstream path, not a workaround. In rough order of effort:
 
-1. **Copy a single skill.** `kanon/skills/<name>/` in the upstream repository is a plain `SKILL.md` plus a `references/` folder. Copy the directory into `.claude/skills/` in a project, or `~/.claude/skills/` for personal use. This is all that is needed for the `kanon` skill itself, which is what Module 5 leans on most.
-2. **Install a pinned artifact.** `kanon install <artifact> --harness <harness> --from-release <tag>` pulls from an upstream tagged release. Upstream publishes per-harness `dist-<harness>.tar.gz` assets and a release manifest, so an install can be pinned and reviewed rather than tracking `main`.
-3. **Clone and build locally.** `git clone`, then `bun run dev build --harness <harness>` and `bun run dev install <artifact> --harness <harness> --source .`.
+1. **Add the marketplace in Cowork.** Customize → Plugins → Browse plugins → Add marketplace, entering `jhu-sheridan-libraries/agentic-skill-library`, then install `context-bazaar`. No terminal. Availability varies by build and by organisation plugin policy.
+2. **Copy a single skill.** `kanon/skills/<name>/` in the upstream repository is a plain `SKILL.md` plus a `references/` folder. Copy the directory into `.claude/skills/` in a project, or `~/.claude/skills/` for personal use. This is all that is needed for the `kanon` skill itself, which is what Module 5 leans on most.
+3. **Install a pinned artifact.** `kanon install <artifact> --harness <harness> --from-release <tag>` pulls from an upstream tagged release. Upstream publishes per-harness `dist-<harness>.tar.gz` assets and a release manifest, so an install can be pinned and reviewed rather than tracking `main`.
+4. **Clone and build locally.** `git clone`, then `bun run dev build --harness <harness>` and `bun run dev install <artifact> --harness <harness> --source .`.
 
 Whichever route a library takes, the review in Module 5's Exercise 3 should happen before the install, not after.
 

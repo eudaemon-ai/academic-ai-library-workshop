@@ -3,12 +3,12 @@ id: "05-skill-marketplace"
 title: "Bonus: The Skill Marketplace"
 tagline: "Appraise, install, author, and govern AI skills as a collection"
 icon: "puzzle-piece"
-estimated_minutes: 85
+estimated_minutes: 90
 role_tags: ["systems", "technical_services", "collection_development", "instruction", "research_support"]
 exercises:
   - id: "01-orient"
     title: "Add the Marketplace and Meet Your Guide"
-    estimated_minutes: 20
+    estimated_minutes: 25
   - id: "02-appraise"
     title: "Read the Catalog Record"
     estimated_minutes: 15
@@ -27,7 +27,7 @@ exercises:
 
 Modules 1–4 treat the AI tool as a fixed product you work inside. This bonus module inverts that: it treats the instructions an AI tool follows as **acquirable, describable, reviewable objects** — and treats the place they come from as a collection you are responsible for.
 
-The worked example is [Kanon](https://github.com/jhu-sheridan-libraries/agentic-skill-library), a command-line tool from the Johns Hopkins Digital Research and Curation Center, and the artifact library it distributes — published as the **Context Bazaar** marketplace. Kanon's premise is *author once, compile to every harness*: you write one canonical **knowledge artifact**, and Kanon compiles it into the native format each AI coding assistant expects.
+The worked example is [Kanon](https://github.com/jhu-sheridan-libraries/agentic-skill-library), a tool from the Johns Hopkins Digital Research and Curation Center, and the artifact library it distributes — published as the **Context Bazaar** marketplace. Kanon's premise is *author once, compile to every harness*: you write one canonical **knowledge artifact**, and Kanon compiles it into the native format each AI coding assistant expects.
 
 That library already contains a `library-ai-workshop` collection — the four Skills from this repository, imported, described, and versioned by someone else. You are about to look at your own work as a catalog record.
 
@@ -46,21 +46,28 @@ You are not expected to memorise a command-line tool. The marketplace ships a sk
 | the **curriculum guide** | Learning paths, facilitation notes, assessment strategy, and accessibility considerations for library staff |
 | **Souk Compass practice** | An optional session on semantic search over the catalog |
 
-This module is the 85-minute library-facing pass. Those references are where you go afterwards, and Exercises 1 and 4 hand you to them directly.
+This module is the 90-minute library-facing pass. Those references are where you go afterwards, and Exercises 1 and 4 hand you to them directly.
 
-### This module is different
+### No terminal required
 
-This is the only module that assumes an **agentic coding tool** rather than a graphical chat product. Three paths are supported, and all five exercises are completable on any of them:
+Earlier drafts of this material assumed a command line. This one does not. Three paths are supported, and **all five exercises are completable on any of them**:
 
-| Path | You need | What you can do |
+| Path | You need | How you work |
 |---|---|---|
-| **Plugin path** (recommended) | Claude Code or Codex | Install the marketplace, browse the catalog by asking, read any artifact in full |
-| **CLI path** | The above plus a terminal, `git`, and [Bun](https://bun.sh) | Everything, plus validate, author, compile, and publish |
-| **Browse-only path** | A web browser | Read the published catalog and repository; do the appraisal, vetting, and governance work on paper |
+| **Cowork** (default) | Claude Cowork | Install the library through menus, then ask questions in plain language |
+| **Coding agent** | Claude Code or Codex | The same, plus a terminal if you want to compile and publish |
+| **Prompt-only** | Any Claude conversation with web access | Install nothing; paste a prompt for each step |
 
-`SKILL-MARKETPLACE-HANDOUT.md`, in the workshop folder beside `WORKSPACE-BRIEF.md`, carries the three working sheets this module uses: an appraisal crosswalk, a vetting checklist, and a local policy template. All three work on paper, on any path.
+**To install in Cowork**: open Customize in the sidebar, then Plugins, then Browse plugins, then Add marketplace. Enter `jhu-sheridan-libraries/agentic-skill-library`. Install the plugin named `context-bazaar`.
 
-Choosing the browse-only path is a legitimate outcome, not a lesser one. Several of the most important judgments in this module — provenance, licensing, trust, who may approve an install — are made before any software is installed at all.
+If you do not see an Add marketplace option, stop there. Some builds do not offer it, and many institutions restrict which plugins staff may add. Use the prompt-only path instead — it reaches every outcome in this module, and being told no by your own institution is a realistic and instructive start to a lesson about governing what you install.
+
+Two companion files sit in the workshop folder beside `WORKSPACE-BRIEF.md`:
+
+- `SKILL-MARKETPLACE-PROMPTS.md` — every prompt in this module, ready to copy and paste, each one written to work whether or not you installed anything.
+- `SKILL-MARKETPLACE-HANDOUT.md` — the three working sheets: an appraisal crosswalk, a vetting checklist, and a local policy template.
+
+Both work on paper. Several of the most important judgments here — provenance, licensing, trust, who may approve an install — are made before any software is installed at all.
 
 ### Vocabulary
 
@@ -86,7 +93,7 @@ Installing a skill means agreeing that an AI tool will follow instructions writt
 
 ### Going further
 
-Eighty-five minutes is a survey. When someone wants depth, the `kanon` skill already carries it — ask for the reference by name:
+Ninety minutes is a survey. When someone wants depth, the `kanon` skill already carries it — ask for the reference by name:
 
 - **the tutorial** — twenty sequential lessons, each self-contained, running from "what is a coding agent" through catalog, import, scaffold, validate, build, install, collections, evals, publish, upgrade, and team sync.
 - **the self-paced course** — three to four hours on skill creation, with a safe practice artifact, assessments, an answer key, and a capstone review.

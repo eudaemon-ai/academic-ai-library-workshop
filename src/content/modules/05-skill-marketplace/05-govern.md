@@ -9,7 +9,10 @@ steps:
     type: "prompt"
     instruction: "A collection manifest carries metadata only. Membership is declared by each artifact, in its own frontmatter."
     prompt_text: |
-      Draft a Kanon collection manifest for a collection of AI skills maintained by an academic library. Include name, displayName, description, version, author, trust, and tags.
+      Draft a Kanon collection manifest for a collection of AI skills maintained
+      by an academic library, following the conventions used in
+      https://github.com/jhu-sheridan-libraries/agentic-skill-library
+      Include name, displayName, description, version, author, trust, and tags.
 
       Then list five artifacts you would want in it, and for each one say who in the library would own it, what evidence would justify moving it from experimental to stable, and what would trigger its removal.
     checkpoint: "Every proposed artifact has a named owner and a stated condition for promotion and for removal."
@@ -23,7 +26,7 @@ steps:
       - "`risk-level`: an artifact marked high risk without a trust lane fails validation"
       - "`visibility`: public appears everywhere, unlisted stays in the catalog but out of default listings, private is excluded from the catalog entirely"
       - "`version` on every artifact, so an install can be pinned and an upgrade can be reviewed"
-      - "`guild status` reports drift between what a manifest says a team should have and what is actually installed; `guild sync` reconciles it"
+      - "A team command reports drift between what a manifest says a team should have and what is actually installed, and another reconciles it"
       - "The vocabulary is enforced by the validator, but every value in it is still self-declared by the author"
   - index: 2
     label: "Draft the local policy"
@@ -43,8 +46,8 @@ steps:
     instruction: "You reviewed a version. Versions move. Confirm what your setup would and would not tell you."
     observe_items:
       - "An installed skill can be updated upstream without anyone at your library reading the change"
-      - "`upgrade --dry-run` shows what would change before it changes; nothing forces anyone to run it"
-      - "A pinned install (`install --from-release <tag>`) trades currency for reviewability"
+      - "There is a command that shows what an upgrade would change before it changes anything; nothing forces anyone to run it"
+      - "Pinning an install to a released version trades currency for reviewability"
       - "Nothing in the marketplace notifies you when an artifact you depend on is deprecated"
       - "Your security review has a date on it, and that date keeps getting older"
   - index: 4

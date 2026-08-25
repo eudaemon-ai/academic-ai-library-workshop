@@ -16,20 +16,22 @@ steps:
     facilitator_note: "That the guide teaches artifact metadata through Dublin Core is not a coincidence; it was written for a library. Point it out. It is the clearest evidence in the module that this tooling can be met on library terms rather than developer ones."
   - index: 1
     label: "Scaffold an artifact"
-    type: "workspace"
-    instruction: |
-      Kanon's premise is that you write knowledge once and it compiles into the format each AI tool expects.
+    type: "prompt"
+    instruction: "Kanon's premise is that you write knowledge once and it compiles into the format each AI tool expects. Start with the metadata, because that is the part the guide you just read spends most of its time on."
+    prompt_text: |
+      Draft a knowledge artifact called library-search-log in the Kanon format,
+      as a file I can save.
 
-      **CLI path.** From the `kanon/` directory:
+      The frontmatter needs: name, displayName, description, keywords, author,
+      version, harnesses, type, inclusion, categories, maturity, trust, license,
+      audience, and collections. Follow the field conventions used by the
+      artifacts in https://github.com/jhu-sheridan-libraries/agentic-skill-library
 
-      ```bash
-      bun run dev new library-search-log --type skill
-      ```
+      Leave the body empty for now. Show me the frontmatter and explain what each
+      field commits me to.
+    checkpoint: "You have a complete set of metadata fields and can say what each one commits you to."
+    facilitator_note: "At a terminal the equivalent is an interactive wizard, `kanon new` — the appendix of the prompt pack has it. The wizard asks the same questions this prompt does; neither answers them for you."
 
-      The wizard asks for a description, keywords, author, artifact type, inclusion strategy, categories, and target harnesses. It creates `knowledge/library-search-log/` containing `knowledge.md`, `hooks.yaml`, and `mcp-servers.yaml`.
-
-      **Plugin and browse-only paths.** Draft the same `knowledge.md` in a plain text file, following the guide you just read. You are writing the identical artifact; you simply will not compile it.
-    checkpoint: "You have a `knowledge.md` with YAML frontmatter and an empty body, or a text file standing in for one."
   - index: 2
     label: "Write the knowledge"
     type: "prompt"
@@ -44,32 +46,32 @@ steps:
       Set maturity to experimental and trust to community, because that is what this honestly is. Include an explicit instruction that the tool must not invent result counts or syntax it has not been given.
     checkpoint: "The body tells the tool what to do and names at least one thing it must refuse to do."
   - index: 3
-    label: "Validate, build, preview"
-    type: "workspace"
-    instruction: |
-      **CLI path.** Three commands, in this order:
+    label: "See the compile"
+    type: "prompt"
+    instruction: "You do not need to run a compiler to see what one does. The library already contains the same artifact at both ends of the pipeline — canonical source, and compiled output for one particular tool."
+    prompt_text: |
+      In https://github.com/jhu-sheridan-libraries/agentic-skill-library
+      compare two files: kanon/knowledge/adr/knowledge.md, which is the canonical
+      source, and kanon/skills/adr/SKILL.md, which is what that same artifact
+      becomes once compiled for Claude Code.
 
-      ```bash
-      bun run dev validate knowledge/library-search-log
-      bun run dev build --harness claude-code
-      bun run dev temper library-search-log --compare
-      ```
+      Show me what is the same, what changed, and what the packaging added or
+      dropped. Then tell me what would happen to the same artifact compiled for
+      Cursor, for Copilot, and for a tool with no support for hooks at all.
+    checkpoint: "You can point at one source file and at least two different outputs generated from it, and name something that was lost on the way."
+    facilitator_note: "At a terminal, `validate`, `build --harness`, and `temper --compare` do this for an artifact you wrote yourself; the appendix has the commands. The comparison here teaches the same idea and needs nothing installed."
 
-      `validate` checks the frontmatter against the schema. `build` compiles into `dist/claude-code/library-search-log/`. `temper` shows you what each AI tool would actually receive, side by side.
-
-      **Plugin and browse-only paths.** Ask your assistant to compare `knowledge/adr/knowledge.md` in the repository with what the same artifact becomes in `kanon/skills/adr/SKILL.md`. That is the compile step, already done, with both ends visible.
-    checkpoint: "You can point at one source file and at two or more different outputs generated from it."
   - index: 4
-    label: "Observe the compile"
+    label: "What survives, what does not"
     type: "observe"
-    instruction: "The point of the exercise is what changes and what does not between the source and each output."
+    instruction: "The point of the exercise is what changes and what does not between one source and each output. Check the answer you were given against each of these."
     observe_items:
       - "One canonical source produced Kiro steering files, a Claude Code skill, a Codex skill, Copilot instructions, Cursor rules, and more"
       - "Each harness has a capability matrix: features are supported fully, partially, or not at all"
       - "Unsupported features degrade rather than fail — inlined, commented, or omitted, with a warning"
-      - "Codex has no declarative hooks, so hook definitions arrive as manual guidance instead"
+      - "A tool with no support for hooks receives them as written guidance instead, with a warning"
       - "The instructions you wrote survive; the packaging around them does not"
-      - "`build --strict` turns those degradation warnings into errors, which is how a shared library keeps its promises"
+      - "There is a setting that turns those degradation warnings into errors, which is how a shared library keeps its promises"
   - index: 5
     label: "Reflect on what to share"
     type: "reflect"
@@ -79,9 +81,9 @@ steps:
 
 ## Author Once, Compile Everywhere
 
-Every AI coding assistant has invented its own file format for standing instructions: Kiro has steering files, Claude Code has `CLAUDE.md` and skills, Codex has `AGENTS.md`, Copilot has instructions files, Cursor and Windsurf and Cline each have rules. Maintaining the same guidance in eight formats is the problem Kanon exists to solve.
+Every AI assistant has invented its own file format for standing instructions: Kiro has steering files, Claude Code has skills, Codex has its own, Copilot has instructions files, Cursor and Windsurf and Cline each have rules. Maintaining the same guidance in eight formats is the problem Kanon exists to solve.
 
-You author one **knowledge artifact** — frontmatter plus Markdown — and the pipeline runs `source → parse → adapt → write`. A per-harness adapter turns your artifact into that tool's native output, degrading gracefully where a tool lacks a feature.
+You author one **knowledge artifact** — a metadata block plus a written body — and the pipeline turns it into each tool's native output, degrading gracefully where a tool lacks a feature. You can see the whole idea by comparing one artifact's source with its compiled form, which is what this exercise does; running the compiler yourself is optional.
 
 The `kanon` skill's authoring guide walks this in nine steps, and it teaches artifact metadata using Dublin Core — because it was written for library staff. Use it rather than this page; reading it as instructional design is half the exercise.
 

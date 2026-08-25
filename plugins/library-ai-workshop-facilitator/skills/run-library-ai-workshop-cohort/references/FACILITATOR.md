@@ -341,25 +341,30 @@ For the teaching exercise, emphasize three points:
 
 Close with the handoff package and cleanup. Participants should remove unnecessary uploads and connections, then follow local retention policy.
 
-## Bonus Module: The Skill Marketplace (85 minutes, optional)
+## Bonus Module: The Skill Marketplace (90 minutes, optional)
 
 This module sits outside the product-neutral core. It uses [Kanon and the agentic-skill-library](https://github.com/jhu-sheridan-libraries/agentic-skill-library) — a command-line tool and the artifact library it distributes as the **Context Bazaar** marketplace — to treat AI instructions as objects a library can appraise, describe, vet, author, and weed.
 
 Offer it when a cohort includes systems, technical services, or scholarly communications staff, or when someone asks how the workshop's own Skills were built. Do not offer it as a required continuation of Modules 1–4.
 
-### Three paths, all complete
+### Three paths, no terminal required
 
 | Path | Requires | Scope |
 |---|---|---|
-| **Plugin** | Claude Code or Codex, and permission to install plugins | Install the marketplace, browse the catalog, read any artifact in full |
-| **CLI** | The above, plus a terminal with `git` and [Bun](https://bun.sh) | Everything, plus validate, author, compile, and publish |
-| **Browse-only** | A web browser | Appraisal, vetting, and governance done on paper |
+| **Cowork** (default) | Claude Cowork | Install through menus, then work by asking questions |
+| **Coding agent** | Claude Code or Codex | The same, plus optional authoring, compiling, and publishing |
+| **Prompt-only** | Any Claude conversation with web access | Everything, installing nothing; paste a prompt per step |
 
-All five exercises are completable on any path. Expect most library cohorts to be browse-only; plan the room around that. The judgments that matter most in this module — provenance, licensing, trust, who may approve an install — are made before any software is installed.
+All five exercises are completable on any path. `SKILL-MARKETPLACE-PROMPTS.md` carries every prompt, each written to work whether or not the plugin is installed, so a learner can switch paths mid-session without losing their place.
+
+In Cowork the install is Customize → Plugins → Browse plugins → Add marketplace, entering `jhu-sheridan-libraries/agentic-skill-library`, then installing `context-bazaar`. Whether that option appears varies by build, and organisations can restrict which plugins staff may add — there is an Anthropic help article for admins on managing plugins org-wide. Do not build your session on it being there.
+
+Expect a good share of a library cohort to end up prompt-only, by preference or by policy. That costs no learning outcomes. The judgments that matter most here — provenance, licensing, trust, who may approve an install — are all made before any software is installed.
 
 ### Before you run it
 
-- **Install permission is institutional, not personal.** Confirm before the session whether staff may add a marketplace to a work machine. If they may not, run the whole module browse-only and say why in the opening.
+- **Install permission is institutional, not personal.** Confirm before the session whether staff may add a marketplace on a work machine. If they may not, run the whole module prompt-only and say why in the opening — it is a live example of the governance the module is about.
+- **Do not troubleshoot installs from the front of the room.** Give it a minute, then move the learner to the prompt pack. Exercise 1 is designed so the module continues unaffected from its third step onward.
 - **Use scratch workspaces.** No repository holding patron data, assessment data, or licensed content.
 - Do not have anyone connect institutional email, cloud storage, or library systems.
 - The optional `souk-compass` MCP server expects a local Solr instance. Skip it.
@@ -384,13 +389,18 @@ One thing to know before you are asked: the `kanon` skill's setup instructions s
 
 ### How learners get it
 
-One thing for this module does ship: `SKILL-MARKETPLACE-HANDOUT.md`, in `library-context.zip` and in this plugin at `references/course/`. It carries the module's three working sheets — an appraisal crosswalk for Exercise 2, a vetting checklist and decision block for Exercise 3, and a fill-in local policy template for Exercise 5. Print it. All three work without a terminal, a plugin, or an internet connection.
+Two things for this module ship, both in `library-context.zip` and in this plugin at `references/course/`:
+
+- `SKILL-MARKETPLACE-PROMPTS.md` — every prompt in the module, numbered by exercise and step, each written to work whether or not anything is installed. This is what a learner without a terminal works from.
+- `SKILL-MARKETPLACE-HANDOUT.md` — the three working sheets: an appraisal crosswalk for Exercise 2, a vetting checklist and decision block for Exercise 3, and a fill-in local policy template for Exercise 5. Print it.
+
+Between them the module runs with no terminal, no plugin, and — apart from the prompts themselves — no network.
 
 Kanon and the Context Bazaar marketplace themselves are not bundled. The module runs against the upstream repository live, so there is no third-party copy to keep current.
 
 If your learners cannot add a marketplace — no plugin support, or local policy forbids it — do not treat the module as blocked:
 
-- The **browse-only path** covers all five exercises using a web browser and the upstream repository. It is the path most library cohorts will take.
+- The **prompt-only path** covers all five exercises with nothing installed. It is the path most library cohorts will take.
 - A single skill can be **copied by hand**: `kanon/skills/<name>/` upstream is a plain `SKILL.md` plus `references/`, and dropping that directory into `.claude/skills/` (project) or `~/.claude/skills/` (personal) is the whole installation. The `kanon` skill is the one worth copying.
 - A pinned install is `kanon install <artifact> --harness <harness> --from-release <tag>`, against upstream's tagged releases.
 
